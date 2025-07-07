@@ -1,5 +1,188 @@
 ---
-const domain = import.meta.env.PUBLIC_SITE_URL
+import ArticleCard1 from "../components/ArticleCard1.astro"
+import Layout from "../layouts/Layout.astro"
 
+const domain = import.meta.env.PUBLIC_SITE_URL
 ---
-<h1>{domain}</h1>
+<Layout title="Tienda de Kuromi" description="Descubre la colección más kawaii de productos oficiales de Kuromi. Peluches adorables, mochilas con estilo y audífonos únicos te esperan." >
+    <section class="hero-content" >
+        <div class="hero">
+            <h1>¡Bienvenido al travieso mundo de Kuromi!</h1>
+            <p>
+                Descubre la colección más tierna de cosas de Kuromi. Peluches adorables, mochilas con estilo, audífonos únicos y más cosas te esperan.
+            </p>
+            <a class="cta" href="#productos" >ver productos</a>
+        </div>
+        <div class="hero-image">
+            <div class="floating-elements">
+            <span aria-hidden="true" class="star star-1">⭐</span>
+            <span aria-hidden="true" class="star star-2">💜</span>
+            <span aria-hidden="true" class="star star-3">🎀</span>
+            <span aria-hidden="true" class="star star-4">✨</span>
+            <span aria-hidden="true" class="star star-5">💕</span>
+        </div>
+        <div class="kuromi-circle">
+            <div aria-hidden="true" class="kuromi-emoji">🐰</div>
+        </div>
+        </div>
+    </section>
+
+    <section id="productos" >
+        <h2>Linea de accesorios de kuromi</h2>
+        <div class="products-grid">
+            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
+            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
+            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .hero-content {
+		display: grid;
+		grid-template-columns: 1fr;
+        align-items: center;
+		gap: 60px;
+		align-items: center;
+		width: 100%;
+        height: 100vh;
+        color: var(--secondary-color);
+	}
+    h1{
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+        text-shadow: 1px 1px 5px var(--primary-color);
+    }
+    h2{
+        text-align: center;
+        font-size: 24px;
+        margin: 20px auto;
+        color: var(--secondary-color);
+    }
+    .hero-content p{
+        font-size: 16px;
+        text-align: center;
+    }
+    .hero-image {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 400px;
+	}
+    .floating-elements {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.star {
+		position: absolute;
+		font-size: 24px;
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.star-1 {
+		top: 10%;
+		left: 15%;
+		animation-delay: 0s;
+	}
+
+	.star-2 {
+		top: 20%;
+		right: 10%;
+		animation-delay: 0.5s;
+	}
+
+	.star-3 {
+		bottom: 30%;
+		left: 10%;
+		animation-delay: 1s;
+	}
+
+	.star-4 {
+		bottom: 15%;
+		right: 20%;
+		animation-delay: 1.5s;
+	}
+
+	.star-5 {
+		top: 50%;
+		left: 5%;
+		animation-delay: 2s;
+	}
+
+	.kuromi-circle {
+		width: 200px;
+		height: 200px;
+		background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 50%, #8B008B 100%);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 
+			0 20px 40px rgba(255, 20, 147, 0.3),
+			inset 0 1px 0 rgba(255, 255, 255, 0.2);
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	.kuromi-emoji {
+		font-size: 80px;
+		animation: bounce 2s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-10px);
+		}
+	}
+
+	@keyframes pulse {
+		0%, 100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.05);
+		}
+	}
+
+	@keyframes bounce {
+		0%, 100% {
+			transform: translateY(0px);
+		}
+		50% {
+			transform: translateY(-5px);
+		}
+	}
+    .products-grid{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    @media(width >= 768px){
+        .hero-content {
+		grid-template-columns: 1fr 1fr ;
+        }
+        h1{
+        font-size: 50px;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+    h2{
+        font-size: 40px;
+    }
+    .hero-content p{
+        font-size: 20px;
+        text-align: center;
+        text-align: left;
+    }
+    .products-grid{
+        flex-direction: row;
+    }
+    }
+</style>

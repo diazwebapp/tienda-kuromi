@@ -1,0 +1,111 @@
+---
+type Props={
+    title:string
+    description:string
+    lang?:string
+    searchConsoleCode?:string
+}
+
+const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+</head>
+<body>
+    <header>
+        <div class="container" style="display: flex;justify-content:space-between;align-items:center;" >
+            <div class="logo">
+                <h2 class="site-name" >Mundo de Kuromi</h2>
+            </div>
+            <div class="nav">
+                <a href="/audifonos-de-kuromi" >Audifonos</a>
+                <a href="/peluches-de-kuromi">Peluches de kuromi</a>
+                <a href="/mochilas-de-kuromi">Mochilas de kuromi</a>
+            </div>
+        </div>
+    </header>
+    <main> <slot> </main>
+    <footer></footer>
+</body>
+</html>
+
+<style is:global >
+    :root{
+        --primary-color:#2C2C2C;
+        --secondary-color:#fff;
+        --decorative-color:#E6007A;
+        --decorative-color-dark:#8B008B;
+    }
+    	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		font-family: 'Poppins', sans-serif;
+		width: 100%;
+		background: linear-gradient(135deg, var(--decorative-color) 0%, var(--decorative-color-dark) 100%);
+		color: var(--primary-color);
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+	}
+
+
+    .site-name::before{
+        content: "🎀";
+    }
+    body > header{
+        position: sticky;
+        bottom:0;
+        order: 3;
+        padding: 20px 0;
+        background-color: var(--secondary-color);
+        z-index: 2;
+    }
+    body > footer{
+        order: 2;
+    }
+	.container,section,article {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 20px 7px;
+        display: block;
+	}
+    a{
+        text-decoration: none;
+        color: var(--primary-color);
+    }
+    .cta{
+        border-radius: 1rem;
+        padding: 10px;
+        box-shadow: 0px 0px 3px var(--primary-color);
+        color: var(--secondary-color);
+        background-color: var(--decorative-color);
+        display: inline-block;
+        text-align: center;
+        margin: 10px auto;
+        font-weight: 600;
+    }
+    @media (min-width: 768px) {
+		.container {
+			padding: 0 20px;
+		}
+        body > header{
+            order: 1;
+            top: 0;
+        }
+        body > main{
+            order:2;
+        }
+        body > footer{
+            order:3;
+        }
+	}
+</style>
