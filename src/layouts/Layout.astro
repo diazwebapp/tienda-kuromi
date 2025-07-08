@@ -1,4 +1,6 @@
 ---
+import { createFullUrlWithSlug } from '../utils/slugCreator'
+
 type Props={
     title:string
     description:string
@@ -7,27 +9,36 @@ type Props={
 }
 
 const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
+
+const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
+const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 ---
 <!DOCTYPE html>
 <html lang={lang}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content={description}>
     <title>{title}</title>
 </head>
 <body>
     <header>
         <div class="container" style="display: flex;justify-content:space-between;align-items:center;" >
-            <div class="logo">
+            <a href="/" class="logo">
                 <h2 class="site-name" >Mundo de Kuromi</h2>
-            </div>
-            <div class="nav">
-                <a href="/audifonos-de-kuromi" >Audifonos</a>
-                <a href="/peluches-de-kuromi">Peluches de kuromi</a>
-                <a href="/mochilas-de-kuromi">Mochilas de kuromi</a>
+            </a>
+            <div class="btn-toggle-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+                <nav class="nav-menu" >
+                    <a href={mocSlug}>Mochilas de kuromi</a><a href={audSlug}>Audifonos de kuromi</a><a href={pelSlug}>Peluches de kuromi</a>
+                </nav>
             </div>
         </div>
     </header>
+    
     <main> <slot> </main>
     <footer></footer>
 </body>
@@ -56,7 +67,9 @@ const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
         flex-direction: column;
         min-height: 100vh;
 	}
-
+    h1{
+        font-size: 30px;
+    }
 
     .site-name::before{
         content: "🎀";
@@ -65,18 +78,63 @@ const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
         position: sticky;
         bottom:0;
         order: 3;
-        padding: 20px 0;
         background-color: var(--secondary-color);
         z-index: 2;
     }
     body > footer{
         order: 2;
     }
+    .btn-toggle-menu{
+        width: 35px;
+        height: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        cursor: pointer;
+    }
+    .btn-toggle-menu:hover span{
+        background-color: var(--decorative-color-dark);
+    }
+    .btn-toggle-menu span{
+        background:var(--primary-color);
+        width: 90%;
+        height: 5px;
+        display: block;
+        border-radius: 5px;
+    }
+    .btn-toggle-menu:hover nav{
+        height: auto;
+        bottom: 90px;
+        padding: 20px 10px;
+    }
+    
+    .nav-menu{
+        position:absolute;
+        min-width: 200px;
+        height: 0px;
+        interpolate-size: allow-keywords;
+        max-height: calc(90vh - 80px);
+        background-color: var(--secondary-color);
+        right: 10px;
+        bottom: 70px;
+        border-radius: 7px;
+        box-shadow: -1px -1px 3px var(--primary-color);
+        transition: height .3s ease-in,
+                    bottom .5s ease-in;
+        overflow: auto;
+    }
+    .nav-menu a{
+        color: var(--primary-color);
+        display: block;
+        padding: 10px;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--primary-color);
+    }
 	.container,section,article {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 20px 7px;
-        display: block;
 	}
     a{
         text-decoration: none;
@@ -92,6 +150,11 @@ const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
         text-align: center;
         margin: 10px auto;
         font-weight: 600;
+        transition: background-color .3s, box-shadow .3s ;
+    }
+    .cta:hover{
+        background-color: var(--decorative-color-dark);
+        box-shadow: 1px 2px 3px var(--primary-color);
     }
     @media (min-width: 768px) {
 		.container {
@@ -100,6 +163,21 @@ const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
         body > header{
             order: 1;
             top: 0;
+            padding: 10px 0;
+        }
+        .btn-toggle-menu:hover nav{
+            bottom: unset;
+            height: auto;
+            top: 43px;
+        }
+        .nav-menu{
+            transition: height .3s ease-in, top .5s ease-in;
+            interpolate-size: allow-keywords;
+            height: 0;
+            bottom: unset;
+            top: 35px;
+            right: 8%;
+            overflow: hidden;
         }
         body > main{
             order:2;

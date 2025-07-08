@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { mochilas } from "../data/mochilas"
+import ProductCard1 from "../components/ProductCard1.astro"
+const title = "mochilas de kuromi, se parte de su mundo"
+const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
+---
+
+<Layout title={title} description={description} >
+    <section >
+        <h1>mochilas de kuromi</h1>
+        <p>
+            Colección completa de mochilas y bolsos de kuromi, son adorables y gran calidad.
+        </p>
+        <div class="grid-products">
+            {
+                mochilas.map((m)=>(
+                    <ProductCard1 
+                    nombre={m.nombre} 
+                    imagen={m.imagen} 
+                    precio={m.precio} 
+                    caracteristicas={m.caracteristicas} 
+                    rating={m.rating}
+                    ratingCount={m.ratingCount}
+                    refLink={m.refLink}
+                    tienda={m.tienda}
+                    />
+                ))
+            }
+        </div>
+    </section>
+    
+</Layout>
+
+<style>
+    .grid-products{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    section h1, section p{
+        color:var(--secondary-color);
+        padding: 20px;
+    }
+    @media(width >= 768px){
+        .grid-products{
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        }
+    }
+</style>

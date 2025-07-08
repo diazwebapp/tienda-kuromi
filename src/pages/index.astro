@@ -1,8 +1,11 @@
 ---
 import ArticleCard1 from "../components/ArticleCard1.astro"
 import Layout from "../layouts/Layout.astro"
+import { createFullUrlWithSlug } from "../utils/slugCreator"
 
-const domain = import.meta.env.PUBLIC_SITE_URL
+const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
+const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 ---
 <Layout title="Tienda de Kuromi" description="Descubre la colección más kawaii de productos oficiales de Kuromi. Peluches adorables, mochilas con estilo y audífonos únicos te esperan." >
     <section class="hero-content" >
@@ -30,9 +33,9 @@ const domain = import.meta.env.PUBLIC_SITE_URL
     <section id="productos" >
         <h2>Linea de accesorios de kuromi</h2>
         <div class="products-grid">
-            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
-            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
-            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido y diseño kawaii" title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug="https://miweb.es" />
+            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug={audSlug} />
+            <ArticleCard1 shortText="Mochilas y bolsos de kuromi" title="Mochilas de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Mochilas de kuromi" slug={mocSlug} />
+            <ArticleCard1 shortText="Peluches bonitos" title="Peluches de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Peluches de kuromi" slug={pelSlug} />
         </div>
     </section>
 </Layout>
@@ -60,6 +63,9 @@ const domain = import.meta.env.PUBLIC_SITE_URL
         margin: 20px auto;
         color: var(--secondary-color);
     }
+	h1,h2,p{
+		padding: 20px;
+	}
     .hero-content p{
         font-size: 16px;
         text-align: center;
@@ -69,7 +75,6 @@ const domain = import.meta.env.PUBLIC_SITE_URL
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 400px;
 	}
     .floating-elements {
 		position: absolute;
@@ -159,9 +164,8 @@ const domain = import.meta.env.PUBLIC_SITE_URL
 		}
 	}
     .products-grid{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        display: grid;
+		grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
         gap: 20px;
     }
     @media(width >= 768px){
@@ -180,9 +184,6 @@ const domain = import.meta.env.PUBLIC_SITE_URL
         font-size: 20px;
         text-align: center;
         text-align: left;
-    }
-    .products-grid{
-        flex-direction: row;
     }
     }
 </style>

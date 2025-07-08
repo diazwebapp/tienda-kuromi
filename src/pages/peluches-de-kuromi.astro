@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { peluches } from "../data/juguetes"
+import ProductCard1 from "../components/ProductCard1.astro"
+const title = "peluches de kuromi, se parte de su mundo"
+const description = "Adquiere peluches de kuromi con la mejor calidad del mundo"
+---
+
+<Layout title={title} description={description} >
+    <section>
+        <h1>peluches de kuromi</h1>
+        <p>
+            Colección completa de peluches de kuromi, son adorables y gran calidad.
+        </p>
+        <div class="grid-products">
+            {
+                peluches.map((p)=>(
+                    <ProductCard1 
+                    nombre={p.nombre} 
+                    imagen={p.imagen} 
+                    precio={p.precio} 
+                    caracteristicas={p.caracteristicas} 
+                    rating={p.rating}
+                    ratingCount={p.ratingCount}
+                    refLink={p.refLink}
+                    tienda={p.tienda}
+                    />
+                ))
+            }
+        </div>
+    </section>
+    
+</Layout>
+
+<style>
+    .grid-products{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    section h1, section p{
+        color:var(--secondary-color);
+        padding: 20px;
+    }
+    @media(width >= 768px){
+        .grid-products{
+            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+        }
+    }
+</style>

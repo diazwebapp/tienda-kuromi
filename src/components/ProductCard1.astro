@@ -1,0 +1,241 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  nombre: string;
+  precio: number;
+  imagen: string;
+  rating: number;
+  ratingCount: number;
+  tienda?: "Ebay" | "Amazon"
+  refLink?: string;
+  caracteristicas: any;
+}
+
+const { nombre, precio, imagen, rating, ratingCount, tienda, refLink, caracteristicas } = Astro.props as Props;
+
+function generateStars(rating: number) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  console.log(emptyStars,hasHalfStar,fullStars)
+  
+  return '⭐'.repeat(fullStars) + (hasHalfStar ? '⭐' : '') + '☆'.repeat(emptyStars);
+}
+---
+
+<div class="product-card">
+  <div class="product-image">
+    <Image width={320} height={180} src={imagen} alt=`imagen de ${nombre}` loading="lazy" />
+    <div class="product-overlay">
+      <div class="store-badge">
+        {tienda === "Amazon" ? "📦" : "🛒"} {tienda}
+      </div>
+    </div>
+  </div>
+  
+  <div class="product-info">
+    <h3 class="product-name">{nombre}</h3>
+    
+    <div class="product-rating">
+      <span class="stars">{generateStars(rating)}</span>
+      <span class="rating-text">({ratingCount} reseñas)</span>
+    </div>
+    
+    <div class="product-features">
+      {Object.entries(caracteristicas).map(([key, value]) => (
+        <span class="feature">
+          {key === 'Bluetooth' ? (value ? '📶 Bluetooth' : '🔌 Con cable') :
+           key === 'autonomia' ? `🔋 ${value}` :
+           key === 'color' ? `🎨 ${value}` :
+           key === 'dimensiones' || "altura" ? `📏 ${value}` :
+           key === 'marca' ? `🏷️ ${value}` :
+           `${key}: ${value}`}
+        </span>
+      ))}
+    </div>
+    
+    <div class="product-footer">
+      <div class="price">
+        <span class="currency">€</span>
+        <span class="amount">{precio.toFixed(2)}</span>
+      </div>
+      <a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta">
+        Comprar Ahora
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .product-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 20, 147, 0.2);
+  }
+
+  .product-image {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .product-card:hover .product-image img {
+    transform: scale(1.1);
+  }
+
+  .product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 20, 147, 0.8) 0%, rgba(139, 0, 139, 0.8) 100%);
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 16px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-card:hover .product-overlay {
+    opacity: 1;
+  }
+
+  .store-badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2C2C2C;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  .product-info {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2C2C2C;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .stars {
+    font-size: 16px;
+    color: #FFD700;
+  }
+
+  .rating-text {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .product-features {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+
+  .feature {
+    font-size: 14px;
+    color: #8B008B;
+    font-weight: 500;
+    padding: 4px 0;
+  }
+
+  .product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: auto;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .currency {
+    font-size: 18px;
+    font-weight: 600;
+    color: #FF1493;
+  }
+
+  .amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #FF1493;
+  }
+
+  .btn-buy {
+    padding: 10px 20px;
+    font-size: 14px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  @media (max-width: 768px) {
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-name {
+      font-size: 16px;
+    }
+
+    .product-footer {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+    }
+
+    .btn-buy {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
