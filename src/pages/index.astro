@@ -26,7 +26,7 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
             <span aria-hidden="true" class="star star-5">💕</span>
         </div>
         <div class="kuromi-circle">
-            <div aria-hidden="true" class="kuromi-emoji"> <Image width={80} height={100} loading="lazy" src="/cosas-de-kuromi.svg" alt="icono cosas de kuromi" /> </div>
+            <div aria-hidden="true" class="kuromi-emoji"> <Image width={100} height={140} loading="lazy" src="/cosas-de-kuromi.svg" alt="icono cosas de kuromi" /> </div>
         </div>
         </div>
     </section>
@@ -81,6 +81,7 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 		position: absolute;
 		width: 100%;
 		height: 100%;
+		z-index: 1;
 	}
 
 	.star {
@@ -120,8 +121,8 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 	}
 
 	.kuromi-circle {
-		width: 200px;
-		height: 200px;
+		width: 180px;
+		height: 180px;
 		background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 50%, #8B008B 100%);
 		border-radius: 50%;
 		display: flex;
@@ -131,11 +132,7 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 			0 20px 40px rgba(255, 20, 147, 0.3),
 			inset 0 1px 0 rgba(255, 255, 255, 0.2);
 		animation: pulse 2s ease-in-out infinite;
-	}
-
-	.kuromi-emoji {
-		font-size: 80px;
-		animation: bounce 2s ease-in-out infinite;
+		z-index:0;
 	}
 
 	@keyframes float {
@@ -156,14 +153,6 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 		}
 	}
 
-	@keyframes bounce {
-		0%, 100% {
-			transform: translateY(0px);
-		}
-		50% {
-			transform: translateY(-5px);
-		}
-	}
     .products-grid{
         display: grid;
 		grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
