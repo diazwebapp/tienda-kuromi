@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets"
 import ArticleCard1 from "../components/ArticleCard1.astro"
 import Layout from "../layouts/Layout.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
@@ -10,9 +11,9 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 <Layout title="Tienda de Kuromi" description="Descubre la colección más kawaii de productos oficiales de Kuromi. Peluches adorables, mochilas con estilo y audífonos únicos te esperan." >
     <section class="hero-content" >
         <div class="hero">
-            <h1>¡Bienvenido al travieso mundo de Kuromi!</h1>
+            <h1>¡Cosas de Kuromi!</h1>
             <p>
-                Descubre la colección más tierna de cosas de Kuromi. Peluches adorables, mochilas con estilo, audífonos únicos y más cosas te esperan.
+                Descubre la colección más tierna de cosas de Kuromi. Peluches adorables, mochilas con estilo, audífonos únicos, accesorios y más.
             </p>
             <a class="cta" href="#productos" >ver productos</a>
         </div>
@@ -25,13 +26,13 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
             <span aria-hidden="true" class="star star-5">💕</span>
         </div>
         <div class="kuromi-circle">
-            <div aria-hidden="true" class="kuromi-emoji">🐰</div>
+            <div aria-hidden="true" class="kuromi-emoji"> <Image width={50} height={70} loading="lazy" src="/kuromi-circut.svg" /> </div>
         </div>
         </div>
     </section>
 
     <section id="productos" >
-        <h2>Linea de accesorios de kuromi</h2>
+        <h2>Lo más destacado de kuromi</h2>
         <div class="products-grid">
             <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug={audSlug} />
             <ArticleCard1 shortText="Mochilas y bolsos de kuromi" title="Mochilas de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Mochilas de kuromi" slug={mocSlug} />
