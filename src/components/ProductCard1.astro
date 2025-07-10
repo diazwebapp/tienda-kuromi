@@ -10,9 +10,10 @@ interface Props {
   tienda?: "Ebay" | "Amazon"
   refLink?: string;
   caracteristicas: any;
+  hiddeBtn?:boolean
 }
 
-const { nombre, precio, imagen, rating, ratingCount, tienda, refLink, caracteristicas } = Astro.props as Props;
+const { nombre, precio, imagen, rating, ratingCount, tienda, refLink, caracteristicas, hiddeBtn=false } = Astro.props as Props;
 
 function generateStars(rating: number) {
   const fullStars = Math.floor(rating);
@@ -34,7 +35,7 @@ function generateStars(rating: number) {
   </div>
   
   <div class="product-info">
-    <h3 class="product-name">{nombre}</h3>
+    <strong class="product-name">{nombre}</strong>
     
     <div class="product-rating">
       <span class="stars">{generateStars(rating)}</span>
@@ -59,9 +60,11 @@ function generateStars(rating: number) {
         <span class="currency">€</span>
         <span class="amount">{precio.toFixed(2)}</span>
       </div>
-      <a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta">
+      {
+        !hiddeBtn ? (<a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta">
         Comprar Ahora
-      </a>
+      </a>) : ''
+      }
     </div>
   </div>
 </div>

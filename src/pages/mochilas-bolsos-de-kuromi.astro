@@ -8,10 +8,15 @@ const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
 
 <Layout title={title} description={description} >
     <section >
-        <h1>mochilas de kuromi</h1>
+        <h1>Mochilas y bolsos Kuromi: ¡Encuentra tú estilo ideal!</h1>
+
         <p>
-            Colección completa de mochilas y bolsos de kuromi, son adorables y gran calidad.
+            Son duraderos y perfectos para cualquier aventura. ¡Prepárate para brillar y mostrar quién eres en cada lugar! con tu <strong>mochila de kuromi</strong>.
         </p>
+    </section>
+
+    <section>
+        <h2>Encuentra el bolso de Kuromi perfecto para tí</h2>
         <div class="grid-products">
             {
                 mochilas.map((m)=>(
@@ -24,12 +29,27 @@ const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
                     ratingCount={m.ratingCount}
                     refLink={m.refLink}
                     tienda={m.tienda}
+                    hiddeBtn
                     />
                 ))
             }
         </div>
     </section>
     
+    <section>
+        <h2>Mochilas de kuromi escolares: Perfectas para estudiantes</h2>
+        <p>
+            Para el colegio y universidad: Cada bolso de kuromi escolar escolar está diseñado para ofrecer amplio espacio para libros, cuadernos y laptops, imagina llevar un ¡<strong>kuromi de mochila</strong>! con diseños que te harán destacar. Encuentra modelos prácticos y resistentes para el día a día académico.
+        </p>
+    </section>
+    <section>
+        <h3>Beneficios clave de nuestras mochilas y bolsos Kuromi:</h3>
+        <p>
+            <strong>Diseño exclusivo y auténtico</strong>: Tenemos mochilas y bolsos Kuromi originales. Capturan la esencia del personaje y son perfectos para los fans.<br/>
+            <strong>Durabilidad superior</strong>: Hechas de poliéster resistente, nuestros accesorios aguantan el uso diario. Son perfectos como mochila escolar de Kuromi o para tu rutina diaria.<br/>
+            <strong>Prácticas y Cómodas</strong>: Tienen compartimentos inteligentes. Los cierres son seguros. Las asas son ajustables. Por eso, son muy cómodas y te ayudan a organizar tus cosas.
+        </p>
+    </section>
 </Layout>
 
 <style>
@@ -38,7 +58,7 @@ const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    section h1, section p{
+    h1, h2, h3, section p{
         color:var(--secondary-color);
         padding: 20px;
     }

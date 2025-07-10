@@ -21,7 +21,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/3j0AAOSw1Xxm1V-~/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"morado"
         },
         "rating":4.5,
@@ -35,7 +35,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/SW0AAOSw5SRnoeRS/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"morado rgb"
         },
         "rating":4.5,
@@ -49,7 +49,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/DokAAOSwj~tne-FY/s-l500.webp",
         "caracteristicas":{
             "Bluetooth":false,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"negro rgb",
             "marca":"Kraken Razer"
         },
@@ -64,7 +64,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/FJYAAOSwgNlleCGo/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"negro"
         },
         "rating":4.5,
@@ -78,7 +78,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/OwoAAOSwyMlleU2T/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"morado"
         },
         "rating":4.5,
@@ -92,7 +92,7 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/r4EAAOSwAylmIjKf/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"blanco"
         },
         "rating":4.5,
@@ -106,12 +106,26 @@ export const audifonos:Audifono[]=[
         "imagen":"https://i.ebayimg.com/images/g/ry8AAOSw8MxmOtBq/s-l1600.webp",
         "caracteristicas":{
             "Bluetooth":true,
-            "autonomia":"4h",
+            "autonomia":"6h",
             "color":"morado"
         },
         "rating":4.5,
         "ratingCount":340,
         "tienda":"Ebay",
         "refLink":"https://www.ebay.es/itm/116315974972?_skw=audifonos+kuromi"
+    },
+    {
+        "nombre":"Audifonos de kuromi Bluetooth plegables",
+        "precio": 22.99,
+        "imagen":"https://m.media-amazon.com/images/I/71Z4uIvrt4L._AC_SL1500_.jpg",
+        "caracteristicas":{
+            "Bluetooth":true,
+            "autonomia":"6h",
+            "color":"negro"
+        },
+        "rating":4.3,
+        "ratingCount":30,
+        "tienda":"Amazon",
+        "refLink":"https://amzn.to/409XwEg"
     }
 ]

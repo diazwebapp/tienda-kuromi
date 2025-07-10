@@ -1,5 +1,6 @@
 ---
 import { createFullUrlWithSlug } from '../utils/slugCreator'
+import Footer from '../components/Footer.astro'
 
 type Props={
     title:string
@@ -20,13 +21,20 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content={description}>
+
+    <link rel="icon" href="/kuromi-cabeza.png" type="image/png">
+
+    <link rel="icon" href="/kuromi-cabeza.ico" sizes="any">
+
+    <link rel="apple-touch-icon" href="/kuromi-cabeza.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/kuromi-cabeza.png">
     <title>{title}</title>
 </head>
 <body>
     <header>
         <div class="container" style="display: flex;justify-content:space-between;align-items:center;" >
             <a href="/" class="logo">
-                <h2 class="site-name" >Mundo de Kuromi</h2>
+                <h2 class="site-name" >Kuromi Store</h2>
             </a>
             <div class="btn-toggle-menu">
                 <span></span>
@@ -40,7 +48,7 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
     </header>
     
     <main> <slot> </main>
-    <footer></footer>
+    <Footer />
 </body>
 </html>
 
@@ -70,7 +78,12 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
     h1{
         font-size: 30px;
     }
-
+    h2{
+        font-size: 24px;
+    }
+    section h1,section h2,section h3,section h4{
+        text-shadow: 1px 1px 5px var(--primary-color);
+    }
     .site-name::before{
         content: "🎀";
     }
@@ -119,7 +132,7 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
         right: 10px;
         bottom: 70px;
         border-radius: 7px;
-        box-shadow: -1px -1px 3px var(--primary-color);
+        box-shadow: -1px -2px 3px var(--primary-color);
         transition: height .3s ease-in,
                     bottom .5s ease-in;
         overflow: auto;
@@ -142,10 +155,10 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
     }
     .cta{
         border-radius: 1rem;
-        padding: 10px;
+        padding: 10px 20px;
         box-shadow: 0px 0px 3px var(--primary-color);
         color: var(--secondary-color);
-        background-color: var(--decorative-color);
+        background: linear-gradient(90deg,var(--decorative-color) 0%, var(--decorative-color-dark) 100%);
         display: inline-block;
         text-align: center;
         margin: 10px auto;
@@ -154,12 +167,15 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
     }
     .cta:hover{
         background-color: var(--decorative-color-dark);
-        box-shadow: 1px 2px 3px var(--primary-color);
+        box-shadow: 0px 1px 3px var(--primary-color);
     }
     @media (min-width: 768px) {
 		.container {
 			padding: 0 20px;
 		}
+        body{
+            font-size:18px;
+        }
         body > header{
             order: 1;
             top: 0;
@@ -168,14 +184,15 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
         .btn-toggle-menu:hover nav{
             bottom: unset;
             height: auto;
-            top: 43px;
+            top: 40px;
         }
         .nav-menu{
             transition: height .3s ease-in, top .5s ease-in;
+            box-shadow: 0px 1px 2px var(--primary-color);
             interpolate-size: allow-keywords;
             height: 0;
             bottom: unset;
-            top: 35px;
+            top: 40px;
             right: 8%;
             overflow: hidden;
         }
@@ -185,5 +202,11 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
         body > footer{
             order:3;
         }
+        h1{
+        font-size: 40px;
+    }
+    h2{
+        font-size: 32px;
+    }
 	}
 </style>

@@ -1,0 +1,189 @@
+---
+import { createFullUrlWithSlug } from "../utils/slugCreator"
+const peluchesUri = createFullUrlWithSlug("peluches-de-kuromi")
+const audifonosUri = createFullUrlWithSlug("audifonos-de-kuromi")
+const mochilasUri = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+---
+<footer class="footer">
+	<div class="container">
+		<div class="footer-content">
+			<div class="footer-section">
+				<h3>🎀 Kuromi Store</h3>
+				<p>Tu tienda de productos Kuromi. Calidad garantizada y envíos a todo el mundo.</p>
+				<div class="social-links">
+					<!-- <a href="#" aria-label="Instagram">📷</a>
+					<a href="#" aria-label="Twitter">🐦</a>
+					<a href="#" aria-label="Facebook">👥</a>
+					<a href="#" aria-label="TikTok">🎵</a>-->
+				</div>
+			</div>
+			<div class="footer-section">
+				<h4>Productos</h4>
+				<ul>
+					<li><a href={peluchesUri}>Peluches</a></li>
+					<li><a href={mochilasUri}>Mochilas</a></li>
+					<li><a href={audifonosUri}>Audífonos</a></li>
+				</ul>
+			</div>
+			<div class="footer-section">
+				<h4>Newsletter</h4>
+				<p>Recibe ofertas exclusivas y novedades</p>
+				<div class="newsletter">
+					<input type="email" placeholder="tu@email.com">
+					<button class="btn">Suscribir</button>
+				</div>
+			</div>
+		</div>
+		<div class="footer-bottom">
+			
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: rgba(44, 44, 44, 0.95);
+		color: white;
+		padding: 60px 0 20px;
+		backdrop-filter: blur(10px);
+	}
+
+	.footer-content {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 40px;
+		margin-bottom: 40px;
+	}
+
+	.footer-section h3 {
+		font-size: 24px;
+		margin-bottom: 16px;
+		background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.footer-section h4 {
+		font-size: 18px;
+		margin-bottom: 16px;
+		color: #FFB6C1;
+	}
+
+	.footer-section p {
+		line-height: 1.6;
+		opacity: 0.8;
+		margin-bottom: 16px;
+	}
+
+	.footer-section ul {
+		list-style: none;
+	}
+
+	.footer-section ul li {
+		margin-bottom: 8px;
+	}
+
+	.footer-section ul li a {
+		color: white;
+		text-decoration: none;
+		opacity: 0.8;
+		transition: all 0.3s ease;
+	}
+
+	.footer-section ul li a:hover {
+		opacity: 1;
+		color: #FFB6C1;
+	}
+
+	.social-links {
+		display: flex;
+		gap: 16px;
+	}
+
+	.social-links a {
+		font-size: 24px;
+		text-decoration: none;
+		transition: transform 0.3s ease;
+	}
+
+	.social-links a:hover {
+		transform: scale(1.2);
+	}
+
+	.newsletter {
+		display: flex;
+		gap: 8px;
+		margin-top: 16px;
+	}
+
+	.newsletter input {
+		flex: 1;
+		padding: 12px;
+		border: 1px solid rgba(255, 182, 193, 0.3);
+		border-radius: 25px;
+		background: rgba(255, 255, 255, 0.1);
+		color: white;
+		outline: none;
+	}
+
+	.newsletter input::placeholder {
+		color: rgba(255, 255, 255, 0.6);
+	}
+
+	.newsletter .btn {
+		padding: 12px 24px;
+		white-space: nowrap;
+	}
+
+	.footer-bottom {
+		border-top: 1px solid rgba(255, 182, 193, 0.2);
+		padding-top: 20px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.footer-bottom p {
+		margin: 0;
+		opacity: 0.6;
+	}
+
+	.footer-links {
+		display: flex;
+		gap: 24px;
+	}
+
+	.footer-links a {
+		color: white;
+		text-decoration: none;
+		opacity: 0.6;
+		transition: opacity 0.3s ease;
+	}
+
+	.footer-links a:hover {
+		opacity: 1;
+	}
+
+	@media (max-width: 768px) {
+		.footer-content {
+			grid-template-columns: 1fr;
+			gap: 32px;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.newsletter {
+			flex-direction: column;
+		}
+
+		.newsletter .btn {
+			align-self: stretch;
+		}
+	}
+</style>

@@ -41,7 +41,7 @@ export const mochilas:Mochila[]=[
     },
     {
         "nombre":"Mochila de Kuromi, negro blanco",
-        "imagen" :"https://m.media-amazon.com/images/I/61li9xGvcLL._AC_SX679_.jpg",
+        "imagen" :"https://m.media-amazon.com/images/I/71RegMhqn8L._AC_SX679_.jpg",
         "precio":27.69,
         "caracteristicas":{
             "dimensiones":"18 x 31 x 44 cm",
@@ -77,5 +77,70 @@ export const mochilas:Mochila[]=[
         "ratingCount":1,
         "refLink":"https://amzn.to/3GzE4tT",
         "tienda":"Amazon"
-    }
+    },
+    {
+        "nombre":"Mochila de kuromi de peluche",
+        "imagen" :"https://m.media-amazon.com/images/I/61jRxMjlYdL._AC_SX679_.jpg",
+        "precio":25.26,
+        "caracteristicas":{
+            "dimensiones":"12 x 22 x 30 cm",
+            "color":"rosa, negro"
+        },
+        "rating":5,
+        "ratingCount":6,
+        "refLink":"https://amzn.to/4lhNauh",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Mochila de kuromi de peluche 30cm",
+        "imagen" :"https://www.montselicenciasinfantiles.com/images/stories/virtuemart/product/51jNWILEKyL9.jpg",
+        "precio":20.00,
+        "caracteristicas":{
+            "dimensiones":"12 x 22 x 30 cm",
+            "color":"blanco, negro"
+        },
+        "rating":5,
+        "ratingCount":6,
+        "refLink":"https://amzn.to/4lhNauh",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Bolso de kuromi escolar pana niñas",
+        "imagen" :"https://m.media-amazon.com/images/I/71xetwiim4L._AC_SX679_.jpg",
+        "precio":20.00,
+        "caracteristicas":{
+            "dimensiones":"10 x 23 x 25 cm",
+            "color":"rosa, negro"
+        },
+        "rating":5,
+        "ratingCount":1,
+        "refLink":"https://amzn.to/44kNZg2",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Bolso de kuromi escolar",
+        "imagen" :"https://m.media-amazon.com/images/I/614L7Rk9WvL._AC_SX679_.jpg",
+        "precio":20.00,
+        "caracteristicas":{
+            "dimensiones":"10 x 23 x 25 cm",
+            "color":"rosa, negro"
+        },
+        "rating":4,
+        "ratingCount":1,
+        "refLink":"https://amzn.to/4kzTKvg",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Bolso de Kuromi, negro blanco",
+        "imagen" :"https://m.media-amazon.com/images/I/71U94Z8uxcL._AC_SX679_.jpg",
+        "precio":27.69,
+        "caracteristicas":{
+            "dimensiones":"18 x 31 x 44 cm",
+            "color":"blanco, negro"
+        },
+        "rating":5,
+        "ratingCount":1,
+        "refLink":"https://amzn.to/4lhCKLf",
+        "tienda":"Amazon"
+    },
 ]

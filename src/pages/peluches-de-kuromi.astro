@@ -2,19 +2,22 @@
 import Layout from "../layouts/Layout.astro"
 import { peluches } from "../data/juguetes"
 import ProductCard1 from "../components/ProductCard1.astro"
-const title = "peluches de kuromi, se parte de su mundo"
-const description = "Adquiere peluches de kuromi con la mejor calidad del mundo"
+const title = "Peluches de Kuromi | Encuentra tu Compañero Ideal"
+const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches"
+const normales = peluches.filter(p=> p.caracteristicas.altura < 39)
+const grandes = peluches.filter(p=> p.caracteristicas.altura >= 40 && p.caracteristicas.altura <= 59)
+const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
 ---
 
 <Layout title={title} description={description} >
     <section>
-        <h1>peluches de kuromi</h1>
+        <h1>Peluches de Kuromi | Encuentra tu Compañero Ideal</h1>
         <p>
-            Colección completa de peluches de kuromi, son adorables y gran calidad.
+            Desde el tamaño perfecto para tu colección hasta el compañero ideal para tus aventuras diarias, aquí encontrarás el peluche de Kuromi que estabas buscando.
         </p>
         <div class="grid-products">
             {
-                peluches.map((p)=>(
+                normales.map((p)=>(
                     <ProductCard1 
                     nombre={p.nombre} 
                     imagen={p.imagen} 
@@ -24,12 +27,52 @@ const description = "Adquiere peluches de kuromi con la mejor calidad del mundo"
                     ratingCount={p.ratingCount}
                     refLink={p.refLink}
                     tienda={p.tienda}
+                    hiddeBtn
                     />
                 ))
             }
         </div>
     </section>
-    
+    <section>
+        <h2>¿Un kuromi de peluche grande es Perfecto para Ti?</h2>
+        <div class="grid-products">
+            {
+                grandes.map((p)=>(
+                    <ProductCard1 
+                    nombre={p.nombre} 
+                    imagen={p.imagen} 
+                    precio={p.precio} 
+                    caracteristicas={p.caracteristicas} 
+                    rating={p.rating}
+                    ratingCount={p.ratingCount}
+                    refLink={p.refLink}
+                    tienda={p.tienda}
+                    hiddeBtn
+                    />
+                ))
+            }
+        </div>
+    </section>
+    <section>
+        <h2>¿Buscas un abrazo enorme? ¡un kuromi peluche gigante te lo dará!</h2>
+        <div class="grid-products">
+            {
+                gigantes.map((p)=>(
+                    <ProductCard1 
+                    nombre={p.nombre} 
+                    imagen={p.imagen} 
+                    precio={p.precio} 
+                    caracteristicas={p.caracteristicas} 
+                    rating={p.rating}
+                    ratingCount={p.ratingCount}
+                    refLink={p.refLink}
+                    tienda={p.tienda}
+                    hiddeBtn
+                    />
+                ))
+            }
+        </div>
+    </section>
 </Layout>
 
 <style>
@@ -38,7 +81,7 @@ const description = "Adquiere peluches de kuromi con la mejor calidad del mundo"
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    section h1, section p{
+    h1, h2, section p{
         color:var(--secondary-color);
         padding: 20px;
     }
