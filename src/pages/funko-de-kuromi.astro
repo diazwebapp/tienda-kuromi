@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro"
+import { funkos } from "../data/juguetes"
+import ProductCard1 from "../components/ProductCard1.astro"
+import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
+const title = "Peluches de Kuromi | Encuentra tu Compañero Ideal"
+const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches"
+
+---
+
+<Layout title={title} description={description} >
+    <section>
+        <h1>Peluches de Kuromi | Encuentra tu Compañero Ideal</h1>
+        <p>
+            Desde el tamaño perfecto para tu colección hasta el compañero ideal para tus aventuras diarias, aquí encontrarás el peluche de Kuromi que estabas buscando.
+        </p>
+        <StyleGridContainer1 widthCard="250px">
+            {
+                funkos.map((p)=>(
+                    <ProductCard1 
+                    nombre={p.nombre} 
+                    imagen={p.imagen} 
+                    precio={p.precio}
+                    rating={p.rating}
+                    ratingCount={p.ratingCount}
+                    refLink={p.refLink}
+                    tienda={p.tienda}
+                    hiddeBtn
+                    />
+                ))
+            }
+        </StyleGridContainer1>
+    </section>
+    <section>
+</Layout>
+
+<style>
+    h1, h2, section p{
+        color:var(--secondary-color);
+        padding: 20px;
+    }
+</style>

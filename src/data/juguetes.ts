@@ -160,12 +160,12 @@ export const peluches:Peluche[]=[
 type Funko={
         nombre:string
         precio:number
-        iamgen:string
+       imagen:string
         rating:number
         color:string
         edicion:number
         ratingCount:number
-        tienda: "Amazon" | "ebay"
+        tienda: "Amazon" | "Ebay"
         refLink?: string
     }
 
@@ -173,7 +173,7 @@ type Funko={
         {
             nombre:"Funko Pop Kuromi 90",
             precio:16.00,
-            iamgen:"https://m.media-amazon.com/images/I/61z4sIi+S6L._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/61z4sIi+S6L._AC_SX679_.jpg",
             rating:4.3,
             ratingCount:396,
             edicion:90,
@@ -184,7 +184,7 @@ type Funko={
         {
             nombre:"Funko Pop melody 91",
             precio:16.00,
-            iamgen:"https://m.media-amazon.com/images/I/611ndYUan7L._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/611ndYUan7L._AC_SX679_.jpg",
             rating:4.3,
             ratingCount:276,
             edicion:91,
@@ -195,7 +195,7 @@ type Funko={
         {
             nombre:"Funko Pop Cinnamoroll 92",
             precio:16.00,
-            iamgen:"https://m.media-amazon.com/images/I/71NPyvsAsdL._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/71NPyvsAsdL._AC_SX679_.jpg",
             rating:4.3,
             ratingCount:316,
             edicion:92,
@@ -206,7 +206,7 @@ type Funko={
         {
             nombre:"Funko Pop Kuromi 101",
             precio:16.00,
-            iamgen:"https://m.media-amazon.com/images/I/61A3OzCjq0L._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/61A3OzCjq0L._AC_SX679_.jpg",
             rating:5,
             ratingCount:47,
             edicion:101,
@@ -217,7 +217,7 @@ type Funko={
         {
             nombre:"Funko Pop Kuromi 108",
             precio:18.00,
-            iamgen:"https://m.media-amazon.com/images/I/61qpgAZCs2L._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/61qpgAZCs2L._AC_SX679_.jpg",
             rating:5,
             ratingCount:47,
             edicion:108,
@@ -228,7 +228,7 @@ type Funko={
         {
             nombre:"Funko Pop Kuromi 105",
             precio:23.00,
-            iamgen:"https://m.media-amazon.com/images/I/51AhQxbCcvL._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/51AhQxbCcvL._AC_SX679_.jpg",
             rating:5,
             ratingCount:1,
             edicion:105,
@@ -239,7 +239,7 @@ type Funko={
         {
             nombre:"Funko Pop Kuromi premium",
             precio:23.00,
-            iamgen:"https://m.media-amazon.com/images/I/71QhdKRvvJL._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/71QhdKRvvJL._AC_SX679_.jpg",
             rating:5,
             ratingCount:18,
             edicion:0,
@@ -250,7 +250,7 @@ type Funko={
         {
             nombre:"figura Kuromi premium",
             precio:19.00,
-            iamgen:"https://m.media-amazon.com/images/I/51fa0NC1raL._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/51fa0NC1raL._AC_SX679_.jpg",
             rating:5,
             ratingCount:18,
             edicion:0,
@@ -261,7 +261,7 @@ type Funko={
         {
             nombre:"Funko Pop melody 103",
             precio:185.00,
-            iamgen:"https://m.media-amazon.com/images/I/61WBhCiCnrL._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/61WBhCiCnrL._AC_SX679_.jpg",
             rating:5,
             ratingCount:52,
             edicion:103,
@@ -272,7 +272,7 @@ type Funko={
         {
             nombre:"Funko Pop Cinnamoroll 100",
             precio:185.00,
-            iamgen:"https://m.media-amazon.com/images/I/61xZclTXN7L._AC_SX679_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/61xZclTXN7L._AC_SX679_.jpg",
             rating:5,
             ratingCount:83,
             edicion:100,
@@ -283,7 +283,7 @@ type Funko={
         {
             nombre:"Funko Pop! 62: Hello Kitty - Fiesta del Unicornio ",
             precio:185.00,
-            iamgen:"https://m.media-amazon.com/images/I/71zCDHKt7eL._AC_SY879_.jpg",
+           imagen:"https://m.media-amazon.com/images/I/71zCDHKt7eL._AC_SY879_.jpg",
             rating:5,
             ratingCount:1027,
             edicion:62,
