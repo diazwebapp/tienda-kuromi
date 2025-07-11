@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro"
 import { audifonos } from "../data/audifonos"
 import ProductCard1 from "../components/ProductCard1.astro"
+import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 const title = "Audifonos de kuromi, se parte de su mundo"
 const description = "Adquiere audifonos de kuromi con la mejor calidad del mundo"
 ---
@@ -12,7 +13,7 @@ const description = "Adquiere audifonos de kuromi con la mejor calidad del mundo
         <p>
             Colección completa de audifonos de kuromi, son adorables y gran calidad.
         </p>
-        <div class="grid-products">
+        <StyleGridContainer1>
             {
                 audifonos.map((audifono)=>(
                     <ProductCard1 
@@ -28,24 +29,14 @@ const description = "Adquiere audifonos de kuromi con la mejor calidad del mundo
                     />
                 ))
             }
-        </div>
+        </StyleGridContainer1>
     </section>
     
 </Layout>
 
 <style>
-    .grid-products{
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
     section h1, section p{
         color:var(--secondary-color);
         padding: 20px;
-    }
-    @media(width >= 768px){
-        .grid-products{
-            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-        }
     }
 </style>

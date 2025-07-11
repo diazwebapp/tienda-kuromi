@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro"
 import { mochilas } from "../data/mochilas"
 import ProductCard1 from "../components/ProductCard1.astro"
+import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 const title = "mochilas de kuromi, se parte de su mundo"
 const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
 
@@ -19,8 +20,9 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
     </section>
 
     <section>
-        <h2>Encuentra el bolso de Kuromi perfecto para tí</h2>
-        <div class="grid-products">
+        <h2>Lleva el bolso de Kuromi perfecto para tí</h2>
+        
+        <StyleGridContainer1 widthCard="270px">
             {
                 varias.map((m)=>(
                     <ProductCard1 
@@ -36,7 +38,7 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
                     />
                 ))
             }
-        </div>
+        </StyleGridContainer1>
     </section>
     
     <section>
@@ -44,7 +46,7 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
         <p>
             Para el colegio y universidad: Cada bolso de kuromi escolar escolar está diseñado para ofrecer amplio espacio para libros, cuadernos y laptops, imagina llevar un ¡<strong>kuromi de mochila</strong>! con diseños que te harán destacar. Encuentra modelos prácticos y resistentes para el día a día académico.
         </p>
-        <div class="grid-products">
+        <StyleGridContainer1 >
             {
                 escolares.map((m)=>(
                     <ProductCard1 
@@ -60,7 +62,7 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
                     />
                 ))
             }
-        </div>
+        </StyleGridContainer1>
     </section>
     <section>
         <h3>Beneficios clave de nuestras mochilas y bolsos Kuromi:</h3>
@@ -71,20 +73,9 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
         </p>
     </section>
 </Layout>
-
 <style>
-    .grid-products{
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    h1, h2, h3, section p{
+h1, h2, h3, section p{
         color:var(--secondary-color);
         padding: 20px;
-    }
-    @media(width >= 768px){
-        .grid-products{
-            grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
-        }
     }
 </style>
