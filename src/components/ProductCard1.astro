@@ -43,7 +43,7 @@ function generateStars(rating: number) {
     </div>
     
     <div class="product-features">
-      {Object.entries(caracteristicas).map(([key, value]) => (
+      {caracteristicas ? Object.entries(caracteristicas).map(([key, value]) => (
         <span class="feature">
           {key === 'Bluetooth' ? (value ? '📶 Bluetooth' : '🔌 Con cable') :
            key === 'autonomia' ? `🔋 ${value}` :
@@ -52,7 +52,7 @@ function generateStars(rating: number) {
            key === 'marca' ? `🏷️ ${value}` :
            `${key}: ${value}`}
         </span>
-      ))}
+      )) : null}
     </div>
     
     <div class="product-footer">
@@ -62,7 +62,7 @@ function generateStars(rating: number) {
       </div>
       {
         !hiddeBtn ? (<a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta">
-        Comprar Ahora
+        Ver detalles
       </a>) : ''
       }
     </div>
