@@ -4,6 +4,9 @@ import { mochilas } from "../data/mochilas"
 import ProductCard1 from "../components/ProductCard1.astro"
 const title = "mochilas de kuromi, se parte de su mundo"
 const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
+
+const escolares = mochilas.filter(m=> m.caracteristicas.escolar)
+const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
 ---
 
 <Layout title={title} description={description} >
@@ -19,7 +22,7 @@ const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
         <h2>Encuentra el bolso de Kuromi perfecto para tí</h2>
         <div class="grid-products">
             {
-                mochilas.map((m)=>(
+                varias.map((m)=>(
                     <ProductCard1 
                     nombre={m.nombre} 
                     imagen={m.imagen} 
@@ -41,6 +44,23 @@ const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
         <p>
             Para el colegio y universidad: Cada bolso de kuromi escolar escolar está diseñado para ofrecer amplio espacio para libros, cuadernos y laptops, imagina llevar un ¡<strong>kuromi de mochila</strong>! con diseños que te harán destacar. Encuentra modelos prácticos y resistentes para el día a día académico.
         </p>
+        <div class="grid-products">
+            {
+                escolares.map((m)=>(
+                    <ProductCard1 
+                    nombre={m.nombre} 
+                    imagen={m.imagen} 
+                    precio={m.precio} 
+                    caracteristicas={m.caracteristicas} 
+                    rating={m.rating}
+                    ratingCount={m.ratingCount}
+                    refLink={m.refLink}
+                    tienda={m.tienda}
+                    hiddeBtn
+                    />
+                ))
+            }
+        </div>
     </section>
     <section>
         <h3>Beneficios clave de nuestras mochilas y bolsos Kuromi:</h3>

@@ -5,6 +5,7 @@ type Mochila={
     "caracteristicas":{
         "dimensiones":string
         "color":string
+        "escolar"?:boolean
     }
     "rating":number
     "ratingCount":number
@@ -71,7 +72,8 @@ export const mochilas:Mochila[]=[
         "precio":21.90,
         "caracteristicas":{
             "dimensiones":"10 x 22 x 27 cm",
-            "color":"rosa, morado"
+            "color":"rosa, morado",
+            "escolar":true
         },
         "rating":5,
         "ratingCount":1,
@@ -110,7 +112,8 @@ export const mochilas:Mochila[]=[
         "precio":20.00,
         "caracteristicas":{
             "dimensiones":"10 x 23 x 25 cm",
-            "color":"rosa, negro"
+            "color":"rosa, negro",
+            "escolar":true
         },
         "rating":5,
         "ratingCount":1,
@@ -123,7 +126,8 @@ export const mochilas:Mochila[]=[
         "precio":20.00,
         "caracteristicas":{
             "dimensiones":"10 x 23 x 25 cm",
-            "color":"rosa, negro"
+            "color":"rosa, negro",
+            "escolar":true
         },
         "rating":4,
         "ratingCount":1,
@@ -143,4 +147,44 @@ export const mochilas:Mochila[]=[
         "refLink":"https://amzn.to/4lhCKLf",
         "tienda":"Amazon"
     },
+    {
+        "nombre":"Bolso de Kuromi 3D, rosa",
+        "imagen" :"https://m.media-amazon.com/images/I/71LvihgblEL._AC_SX679_.jpg",
+        "precio":14.90,
+        "caracteristicas":{
+            "dimensiones":"10 x 25 x 30 cm",
+            "color":"rosa",
+            "escolar":true
+        },
+        "rating":5,
+        "ratingCount":1,
+        "refLink":"https://amzn.to/44WrVsj",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Bolso de Kuromi 3D Loungefly, rosa",
+        "imagen" :"https://m.media-amazon.com/images/I/51tJ-kvmVML._AC_.jpg",
+        "precio":30,
+        "caracteristicas":{
+            "dimensiones":"10 x 25 x 30 cm",
+            "color":"morado"
+        },
+        "rating":5,
+        "ratingCount":54,
+        "refLink":"https://amzn.to/44phFc3",
+        "tienda":"Amazon"
+    },
+    {
+        "nombre":"Mochila Escolar Kuromi - Adaptable a carro",
+        "imagen" :"https://m.media-amazon.com/images/I/71mSzWzgG2L._AC_SX679_.jpg",
+        "precio":34.45,
+        "caracteristicas":{
+            "dimensiones":"13 x 21 x 42 cm",
+            "color":"negro"
+        },
+        "rating":5,
+        "ratingCount":54,
+        "refLink":"https://amzn.to/3GEriu6",
+        "tienda":"Amazon"
+    }
 ]
