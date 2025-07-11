@@ -14,6 +14,7 @@ const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
 const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
+const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -41,7 +42,10 @@ const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
                 <span></span>
                 <span></span>
                 <nav class="nav-menu" >
-                    <a href={mocSlug}>Mochilas de kuromi</a><a href={audSlug}>Audifonos de kuromi</a><a href={pelSlug}>Peluches de kuromi</a>
+                    <a href={mocSlug}>Mochilas de kuromi</a>
+                    <a href={audSlug}>Audifonos de kuromi
+                    </a><a href={pelSlug}>Peluches de kuromi</a>
+                    </a><a href={fkSlug}>Funko pop de kuromi</a>
                 </nav>
             </div>
         </div>
