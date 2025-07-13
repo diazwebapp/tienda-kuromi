@@ -8,6 +8,24 @@ const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
+
+
+const PRINTFUL_API_KEY = "Lsr5MICVVrWyq9b5iy9xZHAIZbsTGeeMxQLzHkQl";
+const PRINTFUL_API_URL = 'https://api.printful.com';
+
+async function getStoreProducts() {
+  
+    const response = await fetch(`${PRINTFUL_API_URL}/store/products`, {
+      headers: {
+        'Authorization': `Bearer ${PRINTFUL_API_KEY}`
+      }
+    });
+
+	const result = await response.json()
+	console.log(result)
+
+}
+
 ---
 <Layout title="Tienda de Kuromi" description="Descubre la colección más kawaii de productos oficiales de Kuromi. Peluches adorables, mochilas con estilo y audífonos únicos te esperan." >
     <section class="hero-content" >

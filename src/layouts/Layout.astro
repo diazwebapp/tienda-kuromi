@@ -7,9 +7,11 @@ type Props={
     description:string
     lang?:string
     searchConsoleCode?:string
+    canonical?:string
+    filtro?:boolean
 }
 
-const {title,description,lang="es",searchConsoleCode} = Astro.props as Props
+const {title,description,lang="es",searchConsoleCode,canonical,filtro} = Astro.props as Props
 
 const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
@@ -21,15 +23,20 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content={description}>
-
     <link rel="icon" href="/kuromi-cabeza.png" type="image/png">
-
-    <link rel="icon" href="/kuromi-cabeza.ico" sizes="any">
-<meta name="google-site-verification" content="N5UUuTZAgxHnv4AkQvqEQV1zD138MqiC11nK6YOZ6Ko" />
     <link rel="apple-touch-icon" href="/kuromi-cabeza.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/kuromi-cabeza.png">
+    
     <title>{title}</title>
+    <meta name="description" content={description}>
+    {
+        canonical?<link rel="canonical" href={canonical}>:null
+    }
+    {
+        canonical?<meta property="og:url" content={canonical}>:null
+    }
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    
 </head>
 <body>
     <header>
@@ -37,17 +44,32 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
             <a href="/" class="logo">
                 <h2 class="site-name" >Kuromi Store</h2>
             </a>
-            <div class="btn-toggle-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-                <nav class="nav-menu" >
-                    <a href={mocSlug}>Mochilas de kuromi</a>
-                    <a href={audSlug}>Audifonos de kuromi
-                    </a><a href={pelSlug}>Peluches de kuromi</a>
-                    </a><a href={fkSlug}>Funko pop de kuromi</a>
-                </nav>
+            
+            <nav id="app-menu" >
+                <a href={mocSlug}>Mochilas de kuromi</a>
+                <a href={audSlug}>Audifonos de kuromi</a>
+                <a href={pelSlug}>Peluches de kuromi</a>
+                </a><a href={fkSlug}>Funko pop de kuromi</a>
+            </nav>
+            <div class="header-btns">
+                {
+                    filtro?(
+                        <button id="filter-btn">
+                            <svg width="30px" height="30px" class="filter-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="current-color" transform="matrix(1, 0, 0, 1, 0, 0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" clip-rule="evenodd" d="M15 10.5A3.502 3.502 0 0 0 18.355 8H21a1 1 0 1 0 0-2h-2.645a3.502 3.502 0 0 0-6.71 0H3a1 1 0 0 0 0 2h8.645A3.502 3.502 0 0 0 15 10.5zM3 16a1 1 0 1 0 0 2h2.145a3.502 3.502 0 0 0 6.71 0H21a1 1 0 1 0 0-2h-9.145a3.502 3.502 0 0 0-6.71 0H3z" fill="current-color"></path></g></svg>
+                            <span>Filtrar</span>
+                        </button>
+                    ):null
+                }
+                <button id="btn-toggle-menu">
+                    <label>
+                        <input type="checkbox" style="display: none;">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </lavel>
+                </button>
             </div>
+           
         </div>
     </header>
     
@@ -57,6 +79,7 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 </html>
 
 <style is:global >
+    
     :root{
         --primary-color:#2C2C2C;
         --secondary-color:#fff;
@@ -99,62 +122,72 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
         bottom:0;
         order: 3;
         background-color: var(--secondary-color);
-        z-index: 2;
+        z-index: 3;
     }
     body > footer{
-        order: 2;
+        order: 3;
     }
-    .btn-toggle-menu{
-        width: 35px;
-        height: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+    
+    #filter-btn{
+        margin-right: 15px;
+    }
+    #filter-btn svg{
+        padding-top:3px;
+        fill: var(--primary-color);
+    }
+    #filter-btn span{
+        display: none;
+    }
+    .header-btns button{
+        border:none;
         cursor: pointer;
+        background-color: transparent;
     }
-    .btn-toggle-menu:hover span{
+    
+    #btn-toggle-menu{
+        flex-direction: column;
+        z-index: 3;
+    }
+    #btn-toggle-menu:hover span{
         background-color: var(--decorative-color-dark);
     }
-    .btn-toggle-menu span{
+    #btn-toggle-menu span{
         background:var(--primary-color);
-        width: 90%;
+        width: 30px;
         height: 5px;
         display: block;
         border-radius: 5px;
+        margin-bottom: 3px;
     }
-    .btn-toggle-menu:hover nav{
-        height: auto;
-        bottom: 90px;
-        padding: 20px 10px;
+    #btn-toggle-menu label{
+        cursor: pointer;
     }
-    
-    .nav-menu{
-        position:absolute;
-        min-width: 200px;
-        height: 0px;
-        interpolate-size: allow-keywords;
-        max-height: calc(90vh - 80px);
+    #app-menu{
+        position: fixed;
+        z-index: 2;
+        height: calc(70% - 60px);
+        right: -60%;
+        bottom:70px;
+        transition: right .5s ease-out;
         background-color: var(--secondary-color);
-        right: 10px;
-        bottom: 70px;
-        border-radius: 7px;
-        box-shadow: -1px -2px 3px var(--primary-color);
-        transition: height .3s ease-in,
-                    bottom .5s ease-in;
-        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        border-radius:7px 0 0 0;
     }
-    .nav-menu a{
-        color: var(--primary-color);
+    #app-menu a{
         display: block;
-        padding: 10px;
-        text-transform: uppercase;
+        padding: 10px 0;
         border-bottom: 1px solid var(--primary-color);
+    }
+    body header:has(input:checked) #app-menu{
+        right: 0;
     }
 	.container,section,article {
 		max-width: 1200px;
 		margin: 0 auto;
 		padding: 20px 7px;
+        width: 100%;
 	}
     a{
         text-decoration: none;
@@ -188,20 +221,10 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
             top: 0;
             padding: 10px 0;
         }
-        .btn-toggle-menu:hover nav{
+        #app-menu{
+            height: calc(100% - 55px);
             bottom: unset;
-            height: auto;
-            top: 40px;
-        }
-        .nav-menu{
-            transition: height .3s ease-in, top .5s ease-in;
-            box-shadow: 0px 1px 2px var(--primary-color);
-            interpolate-size: allow-keywords;
-            height: 0;
-            bottom: unset;
-            top: 40px;
-            right: 8%;
-            overflow: hidden;
+            top:55px;
         }
         body > main{
             order:2;
@@ -210,10 +233,45 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
             order:3;
         }
         h1{
-        font-size: 40px;
-    }
-    h2{
-        font-size: 32px;
-    }
+            font-size: 40px;
+        }
+        h2{
+            font-size: 32px;
+        }
 	}
+    @media (min-width: 916px){
+        #app-menu{
+            position: relative;
+            top: unset;
+            height: unset;
+            right: unset;
+            flex-direction: row;
+            padding: 0;
+            height: unset;
+        }
+        #app-menu a{
+            display: unset;
+            padding: 0 10px;
+            border: unset;
+        }
+        #app-menu a:hover{
+            box-shadow: 0px 1px 0px var(--primary-color) ;
+        }
+        .header-btns{
+            display:none;
+        }
+    }
 </style>
+<script is:inline >
+    document.addEventListener("DOMContentLoaded",()=>{
+        let btnFilter = document.getElementById("filter-btn")
+        if(btnFilter){
+            let filterBox = document.getElementById("filter-box")
+            btnFilter.addEventListener("click",()=>{
+                if(filterBox){
+                    filterBox.classList.toggle('open-filter')
+                }
+            })
+        }
+    })
+</script>
