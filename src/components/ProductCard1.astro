@@ -47,8 +47,8 @@ function generateStars(rating: number) {
         <span class="feature">
           {key === 'Bluetooth' ? (value ? '📶 Bluetooth' : '🔌 Con cable') :
            key === 'autonomia' ? `🔋 ${value}` :
-           key === 'color' ? `🎨 ${value}` :
-           key === 'dimensiones' || "altura" ? `📏 ${value}` :
+           key === 'color' ? <b class="colores" >🎨 {value}</b> :
+           key === 'dimensiones' || "altura" ? <b class="dimenciones" >📏 {value} </b>:
            key === 'marca' ? `🏷️ ${value}` :
            `${key}: ${value}`}
         </span>
