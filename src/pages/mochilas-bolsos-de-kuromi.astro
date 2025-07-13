@@ -77,7 +77,6 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
                     ratingCount={m.ratingCount}
                     refLink={m.refLink}
                     tienda={m.tienda}
-                    hiddeBtn
                     />
                 ))
             }
@@ -89,7 +88,7 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
         <p>
             Para el colegio y universidad: Cada bolso de kuromi escolar escolar está diseñado para ofrecer amplio espacio para libros, cuadernos y laptops, imagina llevar un ¡<strong>kuromi de mochila</strong>! con diseños que te harán destacar. Encuentra modelos prácticos y resistentes para el día a día académico.
         </p>
-        <StyleGridContainer1 >
+        <StyleGridContainer1 widthCard="270px">
             {
                 escolares.map((m)=>(
                     <ProductCard1 
@@ -101,7 +100,6 @@ const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
                     ratingCount={m.ratingCount}
                     refLink={m.refLink}
                     tienda={m.tienda}
-                    hiddeBtn
                     />
                 ))
             }

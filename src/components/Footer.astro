@@ -9,7 +9,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 	<div class="container">
 		<div class="footer-content">
 			<div class="footer-section">
-				<h3>🎀 Kuromi Store</h3>
+				<h3>Kuromi Store</h3>
 				<p>Tu tienda de productos Kuromi. Calidad garantizada y envíos a todo el mundo.</p>
 				<div class="social-links">
 					<!-- <a href="#" aria-label="Instagram">📷</a>
@@ -44,8 +44,8 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 
 <style>
 	.footer {
-		background: rgba(44, 44, 44, 0.95);
-		color: white;
+		background: var(--primary-color);
+		color: var(--secondary-color);
 		padding: 60px 0 20px;
 		backdrop-filter: blur(10px);
 	}
@@ -60,16 +60,20 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 	.footer-section h3 {
 		font-size: 24px;
 		margin-bottom: 16px;
-		background: linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
+	}
+	.footer-section h3::before{
+		content: "🎀";
 	}
 
 	.footer-section h4 {
+		font-size: 20px;
+		margin-bottom: 12px;
+		
+}
+	.footer-section h4 {
 		font-size: 18px;
 		margin-bottom: 16px;
-		color: #FFB6C1;
+		
 	}
 
 	.footer-section p {
@@ -87,7 +91,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 	}
 
 	.footer-section ul li a {
-		color: white;
+		color: var(--secondary-color);
 		text-decoration: none;
 		opacity: 0.8;
 		transition: all 0.3s ease;
@@ -95,7 +99,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 
 	.footer-section ul li a:hover {
 		opacity: 1;
-		color: #FFB6C1;
+		
 	}
 
 	.social-links {
@@ -125,7 +129,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 		border: 1px solid rgba(255, 182, 193, 0.3);
 		border-radius: 25px;
 		background: rgba(255, 255, 255, 0.1);
-		color: white;
+		color: var(--secondary-color);
 		outline: none;
 	}
 
@@ -135,7 +139,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 
 	.newsletter .btn {
 		padding: 12px 24px;
-		white-space: nowrap;
+		var(--secondary-color);-space: nowrap;
 	}
 
 	.footer-bottom {
@@ -159,7 +163,7 @@ const fkUri = createFullUrlWithSlug("funko-de-kuromi")
 	}
 
 	.footer-links a {
-		color: white;
+		color: var(--secondary-color);
 		text-decoration: none;
 		opacity: 0.6;
 		transition: opacity 0.3s ease;
