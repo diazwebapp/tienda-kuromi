@@ -79,7 +79,9 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 </html>
 
 <style is:global >
-    
+    @view-transition{
+        navigation: auto;
+    }
     :root{
         --primary-color:#2C2C2C;
         --secondary-color:#fff;
@@ -200,7 +202,7 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
         box-shadow: 0px 0px 3px var(--primary-color);
         color: var(--secondary-color);
         background: linear-gradient(90deg,var(--decorative-color) 0%, var(--decorative-color-dark) 100%);
-        display: inline-block;
+        display: table;
         text-align: center;
         margin: 10px auto;
         font-weight: 600;

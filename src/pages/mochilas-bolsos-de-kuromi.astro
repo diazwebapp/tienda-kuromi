@@ -1,167 +1,186 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import { mochilas } from "../data/mochilas"
-import ProductCard1 from "../components/ProductCard1.astro"
-import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
-const title = "mochilas de kuromi, se parte de su mundo"
-const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo"
+import Layout from "../layouts/Layout.astro";
+import { mochilas } from "../data/mochilas";
+import ProductCard1 from "../components/ProductCard1.astro";
+import StyleGridContainer1 from "../components/StyleGridContainer1.astro";
+import WithSidebar from "../layouts/WithSidebar.astro";
+const title = "mochilas de kuromi, se parte de su mundo";
+const description =
+    "Adquiere mochilas de kuromi con la mejor calidad del mundo";
 
 //Extraer colores para hacer un filtro
-const todosColores = mochilas.map(m=>m.caracteristicas.color)
-const aplanarColores:string[] = []
-todosColores.forEach(color=>{
-    let colores = color.split(',').map(c=>c.trim())
-    aplanarColores.push(...colores)
-})
+const todosColores = mochilas.map((m) => m.caracteristicas.color);
+const aplanarColores: string[] = [];
+todosColores.forEach((color) => {
+    let colores = color.split(",").map((c) => c.trim());
+    aplanarColores.push(...colores);
+});
 
-const colores = [...new Set(aplanarColores)]
+const colores = [...new Set(aplanarColores)];
 // extraer tamaños para hacer un filtro
 
-const todasDimenciones = mochilas.map(m=>m.caracteristicas.dimensiones)
-const dimenciones = [...new Set(todasDimenciones)] 
+const todasDimenciones = mochilas.map((m) => m.caracteristicas.dimensiones);
+const dimenciones = [...new Set(todasDimenciones)];
 //Dividimos las mochilas por tematicas
-const escolares = mochilas.filter(m=> m.caracteristicas.escolar)
-const varias = mochilas.filter(m=> !m.caracteristicas.escolar)
+const escolares = mochilas.filter((m) => m.caracteristicas.escolar);
+const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
 ---
 
-<Layout title={title} description={description} filtro >
-    <div class="main container">
+<Layout title={title} description={description} filtro>
+    <WithSidebar>
         <aside>
-        <form class="filtro" id="filter-box" >
-            <p>Filtrar</p>
-            <fieldset>
-                <p>Dimenciones</p>
+            <form class="filtro" id="filter-box">
+                <p>Filtrar</p>
+                <fieldset>
+                    <p>Dimenciones 📏</p>
+                    {
+                        dimenciones.map((d) => (
+                            <label>
+                                <input type="checkbox" value={d} />
+                                {d}
+                            </label>
+                        ))
+                    }
+                </fieldset>
+
+                <fieldset>
+                    <p>Colores 🎨</p>
+                    {
+                        colores.map((color) => (
+                            <label>
+                                <input type="checkbox" value={color} />
+                                {color}
+                            </label>
+                        ))
+                    }
+                </fieldset>
+            </form>
+        </aside>
+        <section>
+            <h1>Mochilas y bolsos Kuromi: ¡Encuentra tú estilo ideal!</h1>
+
+            <p>
+                Son duraderos y perfectos para cualquier aventura. ¡Prepárate
+                para brillar y mostrar quién eres en cada lugar! con tu <strong
+                    >mochila de kuromi</strong
+                >.
+            </p>
+        </section>
+
+        <section>
+            <h2>Lleva el bolso de Kuromi perfecto para tí</h2>
+
+            <StyleGridContainer1 widthCard="270px">
                 {
-                    dimenciones.map(d=>(
-                        <label>
-                            <input type="checkbox" value={d}>
-                            {d}
-                        </label>
+                    varias.map((m) => (
+                        <ProductCard1
+                            nombre={m.nombre}
+                            imagen={m.imagen}
+                            precio={m.precio}
+                            caracteristicas={m.caracteristicas}
+                            rating={m.rating}
+                            ratingCount={m.ratingCount}
+                            refLink={m.refLink}
+                            tienda={m.tienda}
+                        />
                     ))
                 }
-            </fieldset>
+            </StyleGridContainer1>
+        </section>
 
-            <fieldset>
-                <p>Colores</p>
+        <section>
+            <h2>Mochilas de kuromi escolares: Perfectas para estudiantes</h2>
+            <p>
+                Para el colegio y universidad: Cada bolso de kuromi escolar
+                escolar está diseñado para ofrecer amplio espacio para libros,
+                cuadernos y laptops, imagina llevar un ¡<strong
+                    >kuromi de mochila</strong
+                >! con diseños que te harán destacar. Encuentra modelos
+                prácticos y resistentes para el día a día académico.
+            </p>
+            <StyleGridContainer1 widthCard="270px">
                 {
-                    colores.map(color=>(
-                        <label>
-                            <input type="checkbox" value={color} >
-                            {color}
-                        </label>
+                    escolares.map((m) => (
+                        <ProductCard1
+                            nombre={m.nombre}
+                            imagen={m.imagen}
+                            precio={m.precio}
+                            caracteristicas={m.caracteristicas}
+                            rating={m.rating}
+                            ratingCount={m.ratingCount}
+                            refLink={m.refLink}
+                            tienda={m.tienda}
+                        />
                     ))
                 }
-            </fieldset>
-        </form>
-    </aside>
-    <section >
-        <h1>Mochilas y bolsos Kuromi: ¡Encuentra tú estilo ideal!</h1>
+            </StyleGridContainer1>
+        </section>
 
-        <p>
-            Son duraderos y perfectos para cualquier aventura. ¡Prepárate para brillar y mostrar quién eres en cada lugar! con tu <strong>mochila de kuromi</strong>.
-        </p>
-    </section>
-
-    <section>
-        <h2>Lleva el bolso de Kuromi perfecto para tí</h2>
-        
-        <StyleGridContainer1 widthCard="270px">
-            {
-                varias.map((m)=>(
-                    <ProductCard1 
-                    nombre={m.nombre} 
-                    imagen={m.imagen} 
-                    precio={m.precio} 
-                    caracteristicas={m.caracteristicas} 
-                    rating={m.rating}
-                    ratingCount={m.ratingCount}
-                    refLink={m.refLink}
-                    tienda={m.tienda}
-                    />
-                ))
-            }
-        </StyleGridContainer1>
-    </section>
-    
-    <section>
-        <h2>Mochilas de kuromi escolares: Perfectas para estudiantes</h2>
-        <p>
-            Para el colegio y universidad: Cada bolso de kuromi escolar escolar está diseñado para ofrecer amplio espacio para libros, cuadernos y laptops, imagina llevar un ¡<strong>kuromi de mochila</strong>! con diseños que te harán destacar. Encuentra modelos prácticos y resistentes para el día a día académico.
-        </p>
-        <StyleGridContainer1 widthCard="270px">
-            {
-                escolares.map((m)=>(
-                    <ProductCard1 
-                    nombre={m.nombre} 
-                    imagen={m.imagen} 
-                    precio={m.precio} 
-                    caracteristicas={m.caracteristicas} 
-                    rating={m.rating}
-                    ratingCount={m.ratingCount}
-                    refLink={m.refLink}
-                    tienda={m.tienda}
-                    />
-                ))
-            }
-        </StyleGridContainer1>
-    </section>
-    
-    <section>
-        <h3>Beneficios clave de nuestras mochilas y bolsos Kuromi:</h3>
-        <p>
-            <strong>Diseño exclusivo y auténtico</strong>: Tenemos mochilas y bolsos Kuromi originales. Capturan la esencia del personaje y son perfectos para los fans.<br/>
-            <strong>Durabilidad superior</strong>: Hechas de poliéster resistente, nuestros accesorios aguantan el uso diario. Son perfectos como mochila escolar de Kuromi o para tu rutina diaria.<br/>
-            <strong>Prácticas y Cómodas</strong>: Tienen compartimentos inteligentes. Los cierres son seguros. Las asas son ajustables. Por eso, son muy cómodas y te ayudan a organizar tus cosas.
-        </p>
-    </section>
-    
-    </div>
+        <section>
+            <h3>Beneficios clave de nuestras mochilas y bolsos Kuromi:</h3>
+            <p>
+                <strong>Diseño exclusivo y auténtico</strong>: Tenemos mochilas
+                y bolsos Kuromi originales. Capturan la esencia del personaje y
+                son perfectos para los fans.<br />
+                <strong>Durabilidad superior</strong>: Hechas de poliéster
+                resistente, nuestros accesorios aguantan el uso diario. Son
+                perfectos como mochila escolar de Kuromi o para tu rutina
+                diaria.<br />
+                <strong>Prácticas y Cómodas</strong>: Tienen compartimentos
+                inteligentes. Los cierres son seguros. Las asas son ajustables.
+                Por eso, son muy cómodas y te ayudan a organizar tus cosas.
+            </p>
+        </section>
+    </WithSidebar>
 </Layout>
 <style>
-h1, h2, h3, section p{
-        color:var(--secondary-color);
+    h1,
+    h2,
+    h3,
+    section p {
+        color: var(--secondary-color);
         padding: 20px;
     }
-    .filtro{
+    .filtro {
         background-color: var(--secondary-color);
         padding: 10px;
         overflow: auto;
         max-height: calc(100% - 70px);
         position: fixed;
         left: -70%;
-        transition: left .5s ease-out;
-        z-index:2;
+        transition: left 0.5s ease-out;
+        z-index: 2;
         min-width: 250px;
         bottom: 70px;
     }
-    .filtro > p{
+    .filtro > p {
         font-size: 30px;
         font-weight: 500;
     }
-    .filtro fieldset{
+    .filtro fieldset {
         border: none;
     }
-    .filtro fieldset > p{
+    .filtro fieldset > p {
         font-size: 24px;
         padding: 10px 0;
     }
-    .filtro label{
+    .filtro label {
         display: block;
-        padding: 20px 0; 
+        padding: 20px 0;
         font-size: 18px;
         cursor: pointer;
     }
-    .filtro label:not(:last-child){
+    .filtro label:not(:last-child) {
         border-bottom: 1px solid var(--primary-color);
     }
-    .open-filter{
+    .open-filter {
         left: 0;
     }
-     
-@media (min-width: 916px){
-        .filtro{
-            position:relative;
-            left:unset;
+
+    @media (min-width: 916px) {
+        .filtro {
+            position: relative;
+            left: unset;
             width: 100%;
             min-width: unset;
             max-height: unset;
@@ -169,31 +188,28 @@ h1, h2, h3, section p{
             padding: 0;
             bottom: unset;
         }
-        .filtro fieldset{
+        .filtro fieldset {
             margin: 20px auto;
             background-color: var(--secondary-color);
             padding: 10px;
             border-radius: 10px;
         }
-       .main{
-            display:grid;
-            grid-template-columns:220px 1fr;
-            gap: 20px;
-        }
-        .main aside{
-            grid-row-start: 1;
-            grid-row-end: 3; 
-        }
-        .main section{
-            grid-column-start: 2;
-            grid-column-end: 3;
-        }
-        .filtro label{
+
+        .filtro label {
             padding: 10px 0;
             font-size: 14px;
         }
-        .filtro > p{
+        .filtro > p {
             display: none;
         }
-     }
+        
+        aside{
+            grid-row-start: 1;
+            grid-row-end: 3; 
+        }
+        section{
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+    }
 </style>

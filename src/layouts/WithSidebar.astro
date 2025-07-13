@@ -1,0 +1,14 @@
+<div class="withSidebar container">
+    <slot/>
+</div>
+
+<style>
+    @media(min-width:916px){
+        .withSidebar{
+            display:grid;
+            grid-template-columns:220px 1fr;
+            gap: 20px;
+        }
+        
+    }
+</style>
