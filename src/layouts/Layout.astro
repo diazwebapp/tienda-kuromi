@@ -85,41 +85,39 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 
 /* Customize the default animation behavior */
 
-::view-transition-group(root) {
-    animation-duration: 0.5s;
-}
+
 
 /* Create a custom animation */
 
 @keyframes move-out {
     from {
-        transform: translateY(0%);
+        transform: translateX(0%);
     }
 
     to {
-        transform: translateY(-100%);
+        transform: translateX(-100%);
     }
 }
 
 @keyframes move-in {
     from {
-        transform: translateY(100%);
+        transform: translateX(100%);
     }
 
     to {
-        transform: translateY(0%);
+        transform: translateX(0%);
     }
 }
 
 /* Apply the custom animation to the old and new page states */
 
 ::view-transition-old(root) {
-    animation: 0.4s ease-in both move-out;
+    animation: 0.8s ease-in both move-out;
 
 }
 
 ::view-transition-new(root) {
-    animation: 0.4s ease-in both move-in;
+    animation: 0.8s ease-in both move-in;
 }
     :root{
         --primary-color:#2C2C2C;
@@ -167,7 +165,7 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
         z-index: 3;
     }
     body > footer{
-        order: 3;
+        order: 2;
     }
     
     #filter-btn{
