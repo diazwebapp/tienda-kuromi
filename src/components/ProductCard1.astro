@@ -24,15 +24,15 @@ function generateStars(rating: number) {
 }
 ---
 
-<div class="product-card">
-  <div class="product-image">
+<article class="product-card">
+  <header class="product-image">
     <Image width={320} height={180} src={imagen} alt=`imagen de ${nombre}` loading="lazy" />
     <div class="product-overlay">
       <div class="store-badge">
         {tienda === "Amazon" ? "📦" : "🛒"} {tienda}
       </div>
     </div>
-  </div>
+  </header>
   
   <div class="product-info">
     <strong class="product-name">{nombre}</strong>
@@ -55,7 +55,7 @@ function generateStars(rating: number) {
       )) : null}
     </div>
     
-    <div class="product-footer">
+    <footer class="product-footer">
       <div class="price">
         <span class="currency">€</span>
         <span class="amount">{precio.toFixed(2)}</span>
@@ -66,8 +66,8 @@ function generateStars(rating: number) {
       </a>) : ''
       }
     </div>
-  </div>
-</div>
+  </footer>
+</article>
 
 <style>
   .product-card {
