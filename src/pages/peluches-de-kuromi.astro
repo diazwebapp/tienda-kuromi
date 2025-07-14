@@ -45,7 +45,7 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
             <p>
                 Encuentra el tamaño perfecto para tu colección al meojr estilo kawai, aquí encontrarás el peluche de Kuromi que estabas buscando.
             </p>
-            <StyleGridContainer1>
+            <StyleGridContainer1 widthCard="200px" >
                 {
                     normales.map((p)=>(
                         <ProductCard1 
@@ -110,11 +110,11 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
 </Layout>
 
 <style>
-    h1, h2, section p{
-        color:var(--secondary-color);
-        padding: 20px;
-    }
+    
     /** estilos del filtro */
+    .filtro{
+        padding: 8px 0;
+    }
     .filtro fieldset, .filtro fieldset legend{
             background-color: var(--secondary-color);
         }
@@ -124,7 +124,7 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
     }
     .filtro fieldset{
         border-radius: 7px;
-        margin-top: 10px;
+        margin-bottom: 10px;
         padding: 10px;
         border:none;
     }

@@ -170,6 +170,13 @@ const schemaOrganization:OrganizationSchema={
     }
     section h1,section h2,section h3,section h4{
         text-shadow: 1px 1px 5px var(--primary-color);
+        color: var(--secondary-color);
+    }
+    p{
+        margin-block: 1.2lh;
+    }
+    section p{
+        color: var(--secondary-color);
     }
     .site-name{
         font-size: 18px;
@@ -244,11 +251,11 @@ const schemaOrganization:OrganizationSchema={
     body header:has(input:checked) #app-menu{
         right: 0;
     }
-	.container,section,article {
+	.container,section,article,aside {
 		max-width: 1200px;
 		margin: 0 auto;
         width: 100%;
-        padding: 0 5px;
+        padding: 5px;
 	}
     a{
         text-decoration: none;
@@ -265,6 +272,11 @@ const schemaOrganization:OrganizationSchema={
         margin: 10px auto;
         font-weight: 600;
         transition: background-color .3s, box-shadow .3s ;
+    }
+    .cta-small{
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: .6rem;
     }
     .cta:hover{
         background-color: var(--decorative-color-dark);

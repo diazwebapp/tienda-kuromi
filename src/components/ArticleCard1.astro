@@ -14,7 +14,7 @@ const {title,imageUri,anchorText,slug, shortText} = Astro.props as Props
     <header>
         <Image width={320} height={180} alt=`image de ${title}` src={imageUri} />
     </header>
-    <div>
+    <div class="body-article" >
         <h3>{title}</h3>
         <p>{shortText}</p>
     </div>
@@ -31,6 +31,9 @@ const {title,imageUri,anchorText,slug, shortText} = Astro.props as Props
         border-radius: 16px;
         background-color: var(--secondary-color);
         overflow: hidden;
+    }
+    .body-article *{
+        color:var(--primary-color);
     }
     img{
         width: 100%;

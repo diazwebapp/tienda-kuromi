@@ -3,7 +3,7 @@
 type Props ={
     widthCard?:string
 }
-const { widthCard="300px" } = Astro.props as Props
+const { widthCard="200px" } = Astro.props as Props
 ---
 <div class="grid-products" style=`grid-template-columns: repeat(auto-fill,minmax(${widthCard},1fr));` >
     <slot/>

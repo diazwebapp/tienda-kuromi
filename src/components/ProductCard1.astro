@@ -20,7 +20,7 @@ function generateStars(rating: number) {
   const hasHalfStar = rating % 1 !== 0;
   const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
   
-  return '⭐'.repeat(fullStars) + (hasHalfStar ? '⭐' : '') + '☆'.repeat(emptyStars);
+  return `<span style="color: #FFD700;" >★</span>`.repeat(fullStars) + (hasHalfStar ? `<span style="color: #FFD700;" >★</span>` : '') + `<span>★</span>`.repeat(emptyStars);
 }
 ---
 
@@ -37,36 +37,36 @@ function generateStars(rating: number) {
   <div class="product-info">
     <strong class="product-name">{nombre}</strong>
     
-    <div class="product-rating">
-      <span class="stars">{generateStars(rating)}</span>
-      <span class="rating-text">({ratingCount} reseñas)</span>
+    <div>
+      <span set:html={generateStars(rating)} ></span>
+      <small class="rating-text">({ratingCount} reseñas)</small>
     </div>
     
     <div class="product-features">
       {caracteristicas ? Object.entries(caracteristicas).map(([key, value]) => (
         <span class="feature">
-          {key === 'Bluetooth' ? (value ? '📶 Bluetooth' : '🔌 Con cable') :
-           key === 'autonomia' ? `🔋 ${value}` :
-           key === 'color' ? <b class="colores" >🎨 {value}</b> :
-           key === 'dimensiones' || "altura" ? <b class="dimenciones" >📏 {key === "altura" ? value+" cm" : value} </b>:
-           key === 'marca' ? `🏷️ ${value}` :
-           `${key}: ${value}`}
+          {key === 'Bluetooth' ? (value ? <small>📶 Bluetooth</small> : <small>🔌 Con cable</small>) :
+           key === 'autonomia' ? <small>🔋 {value}</small> :
+           key === 'color' ? <small class="colores" >🎨 {value}</small> :
+           key === 'dimensiones' || "altura" ? <small class="dimenciones" >📏 {key === "altura" ? value+" cm" : value} </small>:
+           key === 'marca' ? <small>🏷️ {value}</small> :
+          `${key}: <small> ${value}</small>` } 
         </span>
       )) : null}
     </div>
     
     <footer class="product-footer">
-      <div class="price">
-        <span class="currency">€</span>
-        <span class="amount">{precio.toFixed(2)}</span>
-      </div>
-      {
-        !hiddeBtn ? (<a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta">
-        Ver detalles
-      </a>) : ''
-      }
-    </div>
-  </footer>
+        <div class="price">
+          <span class="currency">€</span>
+          <span class="amount">{precio.toFixed(2)}</span>
+        </div>
+            {
+              !hiddeBtn ? (<a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta cta-small">
+                Ver detalles
+              </a>) : ''
+            }
+        </div>
+    </footer>
 </article>
 
 <style>
@@ -99,7 +99,7 @@ function generateStars(rating: number) {
 
   .product-image {
     position: relative;
-    height: 250px;
+    height: 180px;
     overflow: hidden;
   }
 
@@ -110,11 +110,6 @@ function generateStars(rating: number) {
     object-fit: cover;
     transition: transform 0.3s ease;
   }
-
-  .product-card:hover .product-image img {
-    transform: scale(1.1);
-  }
-
   .product-overlay {
     position: absolute;
     top: 0;
@@ -144,55 +139,32 @@ function generateStars(rating: number) {
     backdrop-filter: blur(10px);
   }
 
-  .product-info {
-    padding: 24px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
   .product-name {
-    font-size: 18px;
-    font-weight: 600;
     color: #2C2C2C;
-    margin-bottom: 12px;
-    line-height: 1.4;
+    margin-bottom:8px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    font-size: 14px;
+    padding-top: 10px;
   }
 
-  .product-rating {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-  }
-
-  .stars {
-    font-size: 16px;
-    color: #FFD700;
-  }
+  
 
   .rating-text {
-    font-size: 14px;
     color: #666;
   }
 
   .product-features {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin-bottom: 20px;
+    gap: 4px;
     flex: 1;
   }
 
   .feature {
-    font-size: 14px;
-    color: #8B008B;
-    font-weight: 500;
-    padding: 4px 0;
+    color: var(--decorative-color-dark);
   }
 
   .product-footer {
@@ -212,41 +184,25 @@ function generateStars(rating: number) {
   .currency {
     font-size: 18px;
     font-weight: 600;
-    color: #FF1493;
+    color: var(--decorative-color-dark);
   }
 
   .amount {
     font-size: 24px;
     font-weight: 700;
-    color: #FF1493;
+    color: var(--decorative-color-dark);
   }
 
-  .btn-buy {
-    padding: 10px 20px;
-    font-size: 14px;
-    white-space: nowrap;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
 
   @media (max-width: 768px) {
     .product-info {
-      padding: 20px;
+      padding: 10px;
     }
-
-    .product-name {
-      font-size: 16px;
-    }
-
     .product-footer {
       flex-direction: column;
       align-items: stretch;
-      gap: 12px;
+      gap: 4px;
     }
 
-    .btn-buy {
-      width: 100%;
-      justify-content: center;
-    }
   }
 </style>

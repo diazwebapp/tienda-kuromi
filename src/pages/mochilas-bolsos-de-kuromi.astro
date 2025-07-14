@@ -110,15 +110,10 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
             <div class="grid-products2" id="rsFiltrado">
 
             </div>
+            
         </section>
-
         <section>
-            <h2>Lleva el bolso de Kuromi perfecto para tí</h2>
-            <p>
-                ¿Buscas la mochila ideal para tu día a día? ¡Tenemos el producto adecuado para ti! <br/>
-                Tenemos muchos diseños. Puedes encontrar estilos casuales y modernos. También hay modelos adorables con peluches de colores vivos.
-            </p>
-            <StyleGridContainer1 widthCard="270px">
+            <StyleGridContainer1>
                 {
                     varias.map((m) => (
                         <ProductCard1
@@ -135,6 +130,14 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
                 }
             </StyleGridContainer1>
         </section>
+        <section>
+            <h2>Lleva el bolso de Kuromi perfecto para tí</h2>
+            <p>
+                ¿Buscas la mochila ideal para tu día a día? ¡Tenemos el producto adecuado para ti! <br/>
+                Tenemos muchos diseños. Puedes encontrar estilos casuales y modernos. También hay modelos adorables con peluches de colores vivos.
+            </p>
+            
+        </section>
 
         <section>
             <h2>Mochila de kuromi escolar: Perfectas para estudiantes</h2>
@@ -146,7 +149,7 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
                 >! con diseños que te harán destacar. Encuentra modelos
                 prácticos y resistentes para el día a día académico.
             </p>
-            <StyleGridContainer1 widthCard="270px">
+            <StyleGridContainer1>
                 {
                     escolares.map((m) => (
                         <ProductCard1
@@ -188,13 +191,7 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
         grid-column-end: 3;
         gap:10px;
     }
-    h1,
-    h2,
-    h3,
-    section p {
-        color: var(--secondary-color);
-        padding: 20px;
-    }
+    
     .filtro {
         background-color: var(--secondary-color);
         padding: 10px;
@@ -302,13 +299,13 @@ function seleccionaCardsPorDimencion(search: string, d: boolean, c: boolean) {
             let shouldAdd = false;
 
             if (d) { // Filtra por tamaño
-                let dimencion = card.querySelector("b.dimenciones") as HTMLElement;
+                let dimencion = card.querySelector("small.dimenciones") as HTMLElement;
                 if (dimencion?.textContent?.includes(search)) {
                     shouldAdd = true;
                 }
             }
             if (c) { // Filtra por color
-                let color = card.querySelector("b.colores") as HTMLElement;
+                let color = card.querySelector("small.colores") as HTMLElement;
                 if (color?.textContent?.includes(search)) {
                     shouldAdd = true;
                 }
