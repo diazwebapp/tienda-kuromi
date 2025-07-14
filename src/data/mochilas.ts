@@ -15,7 +15,7 @@ type Mochila={
 
 export const mochilas:Mochila[]=[
     {
-        "nombre":"Mochila Con Estampado de Kuromi, Ligera Resistente Al Agua",
+        "nombre":"Bolso Con Estampado de Kuromi, Ligera Resistente Al Agua",
         "imagen" :"https://m.media-amazon.com/images/I/61a0fueS9cL._AC_SX679_.jpg",
         "precio":42.93,
         "caracteristicas":{
@@ -28,7 +28,7 @@ export const mochilas:Mochila[]=[
         "tienda":"Amazon"
     },
     {
-        "nombre":"Mochila de Kuromi, negro",
+        "nombre":"Bolso de Kuromi, negro",
         "imagen" :"https://m.media-amazon.com/images/I/71uQgEcjj9L._AC_SX679_.jpg",
         "precio":34.00,
         "caracteristicas":{
@@ -81,7 +81,7 @@ export const mochilas:Mochila[]=[
         "tienda":"Amazon"
     },
     {
-        "nombre":"Mochila de kuromi de peluche",
+        "nombre":"Bolso de kuromi de peluche",
         "imagen" :"https://m.media-amazon.com/images/I/61jRxMjlYdL._AC_SX679_.jpg",
         "precio":25.26,
         "caracteristicas":{
