@@ -9,14 +9,7 @@ export type Article={
     datePublished: string 
     dateModified: string
     author: Author
-    "publisher": { // Obligatorio para NewsArticle para Google
-      "@type": "Organization",
-      "name": string,
-      "logo": {
-        "@type": "ImageObject",
-        "url": string // URL del logo
-      }
-    },
+    publisher: OrganizationSchema  // Obligatorio para NewsArticle para Google
     description:string
 };
 
