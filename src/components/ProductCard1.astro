@@ -48,7 +48,7 @@ function generateStars(rating: number) {
           {key === 'Bluetooth' ? (value ? '📶 Bluetooth' : '🔌 Con cable') :
            key === 'autonomia' ? `🔋 ${value}` :
            key === 'color' ? <b class="colores" >🎨 {value}</b> :
-           key === 'dimensiones' || "altura" ? <b class="dimenciones" >📏 {value} </b>:
+           key === 'dimensiones' || "altura" ? <b class="dimenciones" >📏 {key === "altura" ? value+" cm" : value} </b>:
            key === 'marca' ? `🏷️ ${value}` :
            `${key}: ${value}`}
         </span>

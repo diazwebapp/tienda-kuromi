@@ -5,6 +5,7 @@ type Peluche={
                 "imagen": string
                 "caracteristicas":{
                     "altura": number
+                    "color"?: string
                 }
                 "rating": number
                 "ratingCount": number
@@ -13,25 +14,13 @@ type Peluche={
             }
 export const peluches:Peluche[]=[
             {
-                "id":1,
-                "nombre": "Hello Kitty Peluche Kuromi",
-                "precio": 7.0,
-                "imagen": "https://m.media-amazon.com/images/I/71+9uTS7mCL._AC_SL1500_.jpg",
-                "caracteristicas":{
-                    "altura": 7,
-                },
-                "rating": 5,
-                "ratingCount": 1,
-                "tienda": "Amazon",
-                "refLink": "https://amzn.to/44E6ScQ"
-            },
-            {
                 "id": 2,
                 "nombre": "Peluche Kuromi de 13 cm | Textura Suave",
                 "precio": 17.04,
                 "imagen": "https://m.media-amazon.com/images/I/41wAB7NjikL._AC_.jpg",
                 "caracteristicas":{
                     "altura": 13,
+                    "color": "negro, blanco"
                 },
                 "rating": 5,
                 "ratingCount": 1,
@@ -45,6 +34,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/9tcAAOSwo7tliUdK/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 50,
+                    "color": "morado, blanco"
                 },
                 "rating": 4,
                 "ratingCount": 53,
@@ -58,6 +48,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/eXcAAOSwqABliUel/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 60,
+                    "color": "morado, blanco"
                 },
                 "rating": 4,
                 "ratingCount": 53,
@@ -71,6 +62,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/EY4AAOSwTYNliUXB/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 38,
+                    "color": "negro, blanco"
                 },
                 "rating": 4,
                 "ratingCount": 53,
@@ -84,6 +76,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/Z~8AAOSweE5lE90z/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 55,
+                    "color": "rosa, blanco"
                 },
                 "rating": 5,
                 "ratingCount": 53,
@@ -97,6 +90,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/XIwAAOSwfVNlE90n/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 70,
+                    "color": "rosa, blanco"
                 },
                 "rating": 5,
                 "ratingCount": 53,
@@ -105,11 +99,12 @@ export const peluches:Peluche[]=[
             },
             {
                 "id": 8,
-                "nombre": "peluche kuromi gigante 22 cm",
+                "nombre": "peluche kuromi 22 cm",
                 "precio": 13.63,
                 "imagen": "https://i.ebayimg.com/images/g/4C0AAOSw~GpnXD92/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 22,
+                    "color": "negro, blanco"
                 },
                 "rating": 5,
                 "ratingCount":1,
@@ -123,6 +118,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/wqEAAOSwZM5mrdCv/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 60,
+                    "color": "negro, blanco"
                 },
                 "rating": 5,
                 "ratingCount":1,
@@ -136,6 +132,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/wqEAAOSwZM5mrdCv/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 50,
+                    "color": "negro, blanco"
                 },
                 "rating": 5,
                 "ratingCount":1,
@@ -149,6 +146,7 @@ export const peluches:Peluche[]=[
                 "imagen": "https://i.ebayimg.com/images/g/wqEAAOSwZM5mrdCv/s-l1600.webp",
                 "caracteristicas":{
                     "altura": 35,
+                    "color": "negro, blanco"
                 },
                 "rating": 5,
                 "ratingCount":1,
