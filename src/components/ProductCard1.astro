@@ -75,16 +75,26 @@ function generateStars(rating: number) {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
     border: 1px solid rgba(255, 182, 193, 0.3);
     height: 100%;
     display: flex;
     flex-direction: column;
+    animation: fade 0.5s ease-in both;
+    animation-delay: .3s;
+    transition: transform 0.3s ease;
   }
-
+@keyframes fade{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
   .product-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(255, 20, 147, 0.2);
   }
 
   .product-image {
