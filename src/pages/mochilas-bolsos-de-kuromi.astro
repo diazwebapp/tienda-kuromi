@@ -4,8 +4,10 @@ import { mochilas } from "../data/mochilas";
 import ProductCard1 from "../components/ProductCard1.astro";
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro";
 import WithSidebar from "../layouts/WithSidebar.astro";
+import { createFullUrlWithSlug } from "../utils/slugCreator";
 const title = "mochilas de kuromi";
 const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo";
+const canonical = createFullUrlWithSlug("mochilas-bolsos-de-kuromi");
 
 //Extraer colores para hacer un filtro
 const todosColores = mochilas.map((m) => m.caracteristicas.color);
@@ -25,7 +27,7 @@ const escolares = mochilas.filter((m) => m.caracteristicas.escolar);
 const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
 ---
 
-<Layout title={title} description={description} filtro>
+<Layout title={title} description={description} filtro canonical={canonical}>
     <WithSidebar>
         <aside>
             <form class="filtro" id="filter-box">

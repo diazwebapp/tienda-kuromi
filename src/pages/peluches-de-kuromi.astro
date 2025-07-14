@@ -6,6 +6,9 @@ import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
 const title = "Peluches de Kuromi"
 const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches"
+const canonical = createFullUrlWithSlug("peluches-de-kuromi")
+
+
 const normales = peluches.filter(p=> p.caracteristicas.altura < 39)
 const grandes = peluches.filter(p=> p.caracteristicas.altura >= 40 && p.caracteristicas.altura <= 59)
 const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
@@ -13,7 +16,7 @@ const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
 const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
 ---
 
-<Layout title={title} description={description} >
+<Layout title={title} description={description} canonical={canonical} >
     <section>
         <h1>Peluches de Kuromi | Encuentra tu Compañero Ideal</h1>
         <p>

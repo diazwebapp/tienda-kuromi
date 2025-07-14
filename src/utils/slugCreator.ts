@@ -27,6 +27,8 @@ export function createFullUrlWithSlug(text:string) {
   const cleanDomain = domain.endsWith('/') && !slug.startsWith('/') ? domain.slice(0, -1) : domain;
   const cleanSlug = slug.startsWith('/') ? slug.slice(1) : slug; // Elimina '/' inicial si existe en el slug
 
+  if(text == "/") return `${cleanDomain}/`;
+
   return `${cleanDomain}/${cleanSlug}/`;
 }
 

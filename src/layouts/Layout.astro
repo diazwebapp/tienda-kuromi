@@ -7,7 +7,7 @@ type Props={
     description:string
     lang?:string
     searchConsoleCode?:string
-    canonical?:string
+    canonical:string
     filtro?:boolean
 }
 
@@ -28,12 +28,9 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
     
     <title>{title} | Kuromilandia</title>
     <meta name="description" content={description}>
-    {
-        canonical?<link rel="canonical" href={canonical}>:null
-    }
-    {
-        canonical?<meta property="og:url" content={canonical}>:null
-    }
+    <link rel="canonical" href={canonical}>
+    
+    <meta property="og:url" content={canonical}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     
