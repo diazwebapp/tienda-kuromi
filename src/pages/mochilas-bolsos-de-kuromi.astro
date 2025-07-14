@@ -5,6 +5,7 @@ import ProductCard1 from "../components/ProductCard1.astro";
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro";
 import WithSidebar from "../layouts/WithSidebar.astro";
 import { createFullUrlWithSlug } from "../utils/slugCreator";
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas";
 const title = "mochilas de kuromi";
 const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo";
 const canonical = createFullUrlWithSlug("mochilas-bolsos-de-kuromi");
@@ -17,6 +18,44 @@ todosColores.forEach((color) => {
     aplanarColores.push(...colores);
 });
 
+const productsCollection = mochilas.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:canonical,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:"Mochilas de Kuromi",
+    description:"Adquiere mochilas de kuromi con la mejor calidad del mundo",
+    url:createFullUrlWithSlug("mochilas-bolsos-de-kuromi"),
+    includesObject:productsCollection
+}
+
+const schemas = [
+    schemaColection
+]
 const colores = [...new Set(aplanarColores)];
 // extraer tamaños para hacer un filtro
 
@@ -27,7 +66,7 @@ const escolares = mochilas.filter((m) => m.caracteristicas.escolar);
 const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
 ---
 
-<Layout title={title} description={description} filtro canonical={canonical}>
+<Layout title={title} description={description} filtro canonical={canonical} schemas={schemas}>
     <WithSidebar>
         <aside>
             <form class="filtro" id="filter-box">

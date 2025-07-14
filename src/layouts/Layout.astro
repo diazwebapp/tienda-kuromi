@@ -1,6 +1,7 @@
 ---
 import { createFullUrlWithSlug } from '../utils/slugCreator'
 import Footer from '../components/Footer.astro'
+import type { OrganizationSchema } from '../utils/schemas'
 
 type Props={
     title:string
@@ -9,14 +10,26 @@ type Props={
     searchConsoleCode?:string
     canonical:string
     filtro?:boolean
+    schemas?:any[]
 }
 
-const {title,description,lang="es",searchConsoleCode,canonical,filtro} = Astro.props as Props
+const {title,description,lang="es",searchConsoleCode,canonical,filtro,schemas} = Astro.props as Props
 
 const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
+
+const schemaOrganization:OrganizationSchema={
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "@id":createFullUrlWithSlug("/"),
+    name:"Kuromilandia",
+    url:createFullUrlWithSlug("/"),
+    logo:"https://dekuromy.store/kuromi-cabeza.png",
+    email:"diazwebapp@gmail.com"
+}
+
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -33,7 +46,16 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
     <meta property="og:url" content={canonical}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
-    
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schemaOrganization)} > </script>
+    {
+        schemas?(
+            schemas.map((schema)=>{
+                return (
+                    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} > </script>
+                )
+            })
+        ):null
+    }
 </head>
 <body>
     <header>
