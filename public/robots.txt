@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dekuromy.store/sitemap-0.xml
