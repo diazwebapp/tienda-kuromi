@@ -23,7 +23,7 @@ const productsCollection = mochilas.map((m) => {
         "@type": "Product",
         name:m.nombre,
         image:m.imagen,
-        url:canonical,
+        url:m.refLink,
         offers:{
             "@type":"Offer",
             priceCurrency:"EUR",
@@ -49,7 +49,7 @@ const schemaColection:ProductCollectionSchema={
     "@type":"ProductCollection",
     name:"Mochilas de Kuromi",
     description:"Adquiere mochilas de kuromi con la mejor calidad del mundo",
-    url:createFullUrlWithSlug("mochilas-bolsos-de-kuromi"),
+    url:canonical,
     includesObject:productsCollection
 }
 
