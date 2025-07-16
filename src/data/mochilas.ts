@@ -63,7 +63,7 @@ export const mochilas:Mochila[]=[
         },
         "rating":5,
         "ratingCount":1,
-        "refLink":"https://amzn.to/4kvFTWO",
+        "refLink":"https://amzn.to/4fdivMR",
         "tienda":"Amazon"
     },
     {
