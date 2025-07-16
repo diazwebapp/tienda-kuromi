@@ -35,7 +35,7 @@ function generateStars(rating: number) {
   </header>
   
   <div class="product-info">
-    <strong class="product-name">{nombre}</strong>
+    <p class="product-name">{nombre}</p>
     
     <div>
       <span set:html={generateStars(rating)} ></span>
@@ -148,6 +148,7 @@ function generateStars(rating: number) {
     overflow: hidden;
     font-size: 14px;
     padding-top: 10px;
+    font-weight: 500;
   }
 
   
