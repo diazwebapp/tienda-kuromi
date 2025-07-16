@@ -3,13 +3,14 @@ import { Image } from "astro:assets"
 import ArticleCard1 from "../components/ArticleCard1.astro"
 import Layout from "../layouts/Layout.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
+import type { OrganizationSchema } from '../utils/schemas'
 
 const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
 const canonical = createFullUrlWithSlug("/")
-console.log(canonical)
+
 
 const PRINTFUL_API_KEY = "Lsr5MICVVrWyq9b5iy9xZHAIZbsTGeeMxQLzHkQl";
 const PRINTFUL_API_URL = 'https://api.printful.com';
@@ -27,8 +28,20 @@ async function getStoreProducts() {
 
 }
 
+const schemaOrganization:OrganizationSchema={
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "@id":createFullUrlWithSlug("/"),
+    name:"Kuromilandia",
+    url:createFullUrlWithSlug("/"),
+    logo:"https://dekuromy.store/kuromi-cabeza.png",
+    email:"diazwebapp@gmail.com"
+}
+
+const schemas=[schemaOrganization]
+
 ---
-<Layout title="Cosas de Kuromi" description="Peluches, mochilas, audífonos y más cosas de kuromi te esperan en kuromilandia." canonical={canonical} >
+<Layout title="Cosas de Kuromi" description="Peluches, mochilas, audífonos y más cosas de kuromi te esperan en kuromilandia." canonical={canonical} schemas={schemas}>
     <section class="hero-content" >
         <div class="hero">
             <h1>¡Cosas de Kuromi!</h1>

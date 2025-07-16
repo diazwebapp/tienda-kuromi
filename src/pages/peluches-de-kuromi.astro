@@ -25,17 +25,18 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
 <Layout title={title} description={description} canonical={canonical} >
     <WithSidebar>
         <aside>
+            <button id="resetFilters" >resear filtros</button>
             <form class="filtro" >
                 <fieldset>
                     <legend>Tamaños</legend>
                     {
-                        alturas.map(t=><label><input type="radio" name="tamaño" value={t} /> {t} cm</label>)
+                        alturas.map(t=><label><input type="radio" name="altura" value={t} /> {t} cm</label>)
                     }
                 </fieldset>
                 <fieldset>
                     <legend>Colores</legend>
                     {
-                        colores.map(c=><label><input type="radio" name="tamaño" value={c} /> {c} </label>)
+                        colores.map(c=><label><input type="radio" name="color" value={c} /> {c} </label>)
                     }
                 </fieldset>
             </form>
@@ -45,6 +46,10 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
             <p>
                 Encuentra el tamaño perfecto para tu colección al meojr estilo kawai, aquí encontrarás el peluche de Kuromi que estabas buscando.
             </p>
+            <div class="rsfilter">
+                <div class="toolbar"></div>
+                <div class="gridFilter"></div>
+            </div>
             <StyleGridContainer1 widthCard="200px" >
                 {
                     normales.map((p)=>(
@@ -147,3 +152,69 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kutomi")
         }
     }
 </style>
+
+<script>
+    const products:any[] = []
+    const resetFilters = document.querySelector<HTMLButtonElement>('#resetFilters')
+    const tamanos = document.querySelectorAll<HTMLInputElement>('input[name="altura"]')
+    const colores = document.querySelectorAll<HTMLInputElement>('input[name="color"]')
+    const articles = document.querySelectorAll<HTMLElement>('article.product-card')
+
+
+    if(tamanos.length > 0){
+        tamanos.forEach(t=>{
+            t.addEventListener('change',()=>{
+                const product = buscarProductos(t.value)
+                const exists = products.includes(product)
+                if(!exists){
+                    products.push(product)
+                }
+                console.log(products)
+            })
+        })
+    }
+    if(colores.length > 0){
+        colores.forEach(c=>{
+            c.addEventListener('change',()=>{
+                const product = buscarProductos(null,c.value)
+                const exists = products.includes(product)
+                if(!exists){
+                    products.push(product)
+                }
+                console.log(products)
+            })
+        })
+    }
+    if(resetFilters){
+        resetFilters.addEventListener('click',()=>{
+            resetearFiltros()
+        })
+    }
+    
+    function buscarProductos(dimenciones?:string | null,colores?:string){
+        for(let article of articles){
+            const altura = article.querySelector("small.dimenciones")
+            const color = article.querySelector("small.colores")
+            if(altura || color){
+                const a = altura?.textContent
+                const c = color?.textContent
+                if(a && dimenciones){
+                    if(a.includes(dimenciones)){
+                        return article
+                    }
+                }
+                if(c && colores){
+                    if(c.includes(colores)){
+                        return article
+                    }
+                }
+            }
+        }
+    }
+
+    function resetearFiltros(){
+        products.length = 0
+
+    }
+        
+</script>
