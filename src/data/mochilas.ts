@@ -90,11 +90,11 @@ export const mochilas:Mochila[]=[
         },
         "rating":5,
         "ratingCount":6,
-        "refLink":"https://amzn.to/4lhNauh",
+        "refLink":"https://amzn.to/4eP1vfm",
         "tienda":"Amazon"
     },
     {
-        "nombre":"Mochila de kuromi de peluche 30cm",
+        "nombre":"Mochila de kuromi de peluche 30 cm",
         "imagen" :"https://www.montselicenciasinfantiles.com/images/stories/virtuemart/product/51jNWILEKyL9.jpg",
         "precio":20.00,
         "caracteristicas":{
