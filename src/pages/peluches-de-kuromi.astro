@@ -15,7 +15,9 @@ alturas = [...new Set(alturas)].sort((a,b)=>a-b)
 let colores = peluches.map(p=>p.caracteristicas.color)
 colores = [...new Set(colores)]
 
-const normales = peluches.filter(p=> p.caracteristicas.altura < 39)
+
+const minis = peluches.filter(p=> p.caracteristicas.altura < 15)
+const normales = peluches.filter(p=> p.caracteristicas.altura >= 16 && p.caracteristicas.altura < 39)
 const grandes = peluches.filter(p=> p.caracteristicas.altura >= 40 && p.caracteristicas.altura <= 59)
 const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
 
@@ -51,6 +53,33 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
                 <div class="toolbar"></div>
                 <div class="gridFilter"></div>
             </div>
+            <h2>Empezamos con los peluches más Pequeños</h2>
+            <p>
+                La categoria mas tienra, aqui tienes los tamaños pequeños, so la version más mini.
+            </p>
+            <StyleGridContainer1 widthCard="200px" >
+                {
+                    minis.map((p)=>(
+                        <ProductCard1 
+                        nombre={p.nombre} 
+                        imagen={p.imagen} 
+                        precio={p.precio} 
+                        caracteristicas={p.caracteristicas} 
+                        rating={p.rating}
+                        ratingCount={p.ratingCount}
+                        refLink={p.refLink}
+                        tienda={p.tienda}
+                        />
+                    ))
+                }
+            </StyleGridContainer1>
+        </section>
+
+        <section>
+            <h2>Medianos</h2>
+            <p>
+                Aqui tienes los tamaños mas comunes, utiles para cualquier detalle o decoración.
+            </p>
             <StyleGridContainer1 widthCard="200px" >
                 {
                     normales.map((p)=>(
