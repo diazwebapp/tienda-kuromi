@@ -5,6 +5,7 @@ import ProductCard1 from "../components/ProductCard1.astro"
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
 import WithSidebar from "../layouts/WithSidebar.astro"
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas";
 const title = "Peluches de Kuromi"
 const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches"
 const canonical = createFullUrlWithSlug("peluches-de-kuromi")
@@ -22,12 +23,53 @@ const grandes = peluches.filter(p=> p.caracteristicas.altura >= 40 && p.caracter
 const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
 
 const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+
+
+const productsCollection =peluches.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:m.refLink,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:title,
+    description:description,
+    url:canonical,
+    includesObject:productsCollection
+}
+
+const schemas = [
+    schemaColection
+]
+
 ---
 
-<Layout title={title} description={description} canonical={canonical} >
+<Layout title={title} description={description} canonical={canonical} schemas={schemas} filtro={true}>
     <WithSidebar>
         <aside>
-            <form class="filtro" >
+            <form class="filtro" id="filter-box" >
                 <fieldset>
                     <legend>Tamaños</legend>
                     {
@@ -173,16 +215,20 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
         }
        
     }
-    
-    @keyframes show{
-        to{
-            opacity: 1;
-            display: flex;
-        }
-    }
     /** estilos del filtro */
     .filtro{
         padding: 8px 0;
+        position: fixed;
+        left: -90%;
+        top:0;
+        height: calc(100% - 63px);
+        overflow: auto;
+        background-color: rgba(0,0,0,.5);
+        backdrop-filter: blur(5px);
+        transition: left .5s ease-out;
+        z-index:3;
+        min-width:280px;
+        padding:10px;
     }
     .filtro fieldset, .filtro fieldset legend{
             background-color: var(--secondary-color);
@@ -203,9 +249,20 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
         padding: 10px 0;
         cursor: pointer;
     }
+    .open-filter {
+        left: 0;
+    }
     @media (min-width: 916px) {
         
-        
+        .filtro{
+            position: inherit;
+            left: unset;
+            width: 100%;
+            min-width: unset;
+            max-height: unset;
+            background-color: transparent;
+            padding: 0;
+        }
         aside{
             grid-row-start: 1;
             grid-row-end: 8; 

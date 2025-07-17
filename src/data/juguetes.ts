@@ -10,7 +10,7 @@ type Peluche={
                 "rating": number
                 "ratingCount": number
                 "tienda": "Amazon" | "Ebay"
-                "refLink"?: string
+                "refLink": string
             }
 export const peluches:Peluche[]=[
             {
