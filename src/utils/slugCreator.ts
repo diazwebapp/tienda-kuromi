@@ -1,5 +1,10 @@
-const domain = import.meta.env.PUBLIC_SITE_URL
-function generateSlug(text:string) {
+const domain = import.meta.env.PUBLIC_SITE_URL;
+
+/**
+ * Genera un slug amigable para URL a partir de una cadena de texto.
+ * Elimina acentos, convierte a minúsculas, recorta espacios y reemplaza espacios por guiones.
+ */
+function generateSlug(text: string) {
   if (typeof text !== 'string') {
     console.error("Error: El argumento 'text' debe ser una cadena de texto.");
     return "";
@@ -16,19 +21,28 @@ function generateSlug(text:string) {
     .replace(/--+/g, '-'); // Reemplaza múltiples guiones por uno solo
 }
 
-export function createFullUrlWithSlug(text:string) {
-   const slug = generateSlug(text);
-  if (typeof domain !== 'string' || typeof slug !== 'string') {
-    console.error("Error: Los argumentos 'domain' y 'slug' deben ser cadenas de texto.");
+/**
+ * Crea una URL completa uniendo el dominio base con una ruta relativa dada.
+ * Esta función espera que 'relativePath' ya esté en el formato de slug y contenga
+ * la estructura de subcarpetas deseada. NO aplica 'generateSlug' internamente.
+ */
+export function createFullUrlWithSlug(relativePath: string) {
+  if (typeof domain !== 'string' || typeof relativePath !== 'string') {
+    console.error("Error: Los argumentos 'domain' y 'relativePath' deben ser cadenas de texto.");
     return "";
   }
 
-  // Asegura que el dominio tenga un '/' al final si no lo tiene, a menos que el slug comience con uno.
-  const cleanDomain = domain.endsWith('/') && !slug.startsWith('/') ? domain.slice(0, -1) : domain;
-  const cleanSlug = slug.startsWith('/') ? slug.slice(1) : slug; // Elimina '/' inicial si existe en el slug
+  // Asegura que el dominio termine con una sola barra para una concatenación consistente
+  const cleanDomain = domain.endsWith('/') ? domain : domain + '/';
 
-  if(text == "/") return `${cleanDomain}/`;
+  // Limpia la ruta relativa: elimina barras iniciales o finales
+  let cleanedPath = relativePath.replace(/^\/|\/$/g, '');
 
-  return `${cleanDomain}/${cleanSlug}/`;
+  // Caso especial para la URL raíz si la ruta relativa es "/" o vacía
+  if (cleanedPath === "") {
+    return cleanDomain;
+  }
+
+  // Retorna la URL completa con la ruta relativa y asegura una barra al final
+  return `${cleanDomain}${cleanedPath}/`;
 }
-
