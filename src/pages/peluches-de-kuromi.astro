@@ -5,6 +5,7 @@ import ProductCard1 from "../components/ProductCard1.astro"
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
 import WithSidebar from "../layouts/WithSidebar.astro"
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas";
 const title = "Peluches de Kuromi"
 const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches"
 const canonical = createFullUrlWithSlug("peluches-de-kuromi")
@@ -22,13 +23,53 @@ const grandes = peluches.filter(p=> p.caracteristicas.altura >= 40 && p.caracter
 const gigantes = peluches.filter(p=> p.caracteristicas.altura >= 60)
 
 const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+
+
+const productsCollection =peluches.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:m.refLink,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:title,
+    description:description,
+    url:canonical,
+    includesObject:productsCollection
+}
+
+const schemas = [
+    schemaColection
+]
+
 ---
 
-<Layout title={title} description={description} canonical={canonical} >
+<Layout title={title} description={description} canonical={canonical} schemas={schemas} filtro={true}>
     <WithSidebar>
         <aside>
-            <button id="resetFilters" >resear filtros</button>
-            <form class="filtro" >
+            <form class="filtro" id="filter-box" >
                 <fieldset>
                     <legend>Tamaños</legend>
                     {
@@ -46,16 +87,22 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
         <section>
             <h1>Peluches de Kuromi | Encuentra tu Compañero Ideal</h1>
             <p>
-                Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de peluches. <br/>
-                Encuentra el tamaño perfecto para tu colección al meojr estilo kawai, aquí encontrarás el peluche de Kuromi que estabas buscando.
+                Seguro te has preguntado ¿dónde comprar peluches de kuromi? En kuromilandia encontraras una exclusiva selección de peluches. <br/>
+
+                Encuentra el tamaño perfecto para tu colección al mejor estilo kawai.
             </p>
             <div class="rsfilter">
-                <div class="toolbar"></div>
+                <div class="toolbar">
+                    <b>Resultado:</b>
+                    <button class="cta" id="btnReset" >
+                        Quitar filtros
+                    </button>
+                </div>
                 <div class="gridFilter"></div>
             </div>
             <h2>Empezamos con los peluches más Pequeños</h2>
             <p>
-                La categoria mas tienra, aqui tienes los tamaños pequeños, so la version más mini.
+                La categoría mas tienda, aquí tienes los tamaños pequeños, so la versión más mini.
             </p>
             <StyleGridContainer1 widthCard="200px" >
                 {
@@ -76,7 +123,7 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
         </section>
 
         <section>
-            <h2>Medianos</h2>
+            <h2>Continuamos con los de tamaño normal o medianos</h2>
             <p>
                 Aqui tienes los tamaños mas comunes, utiles para cualquier detalle o decoración.
             </p>
@@ -145,10 +192,43 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 </Layout>
 
 <style>
-    
+    /**Estilos para gridFilter */
+    .gridFilter{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    .toolbar{
+        background-color: var(--secondary-color);
+        justify-content: space-between;
+        padding:10px 5px;
+        align-items: center;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        display:flex;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        &&button{
+            border: none;
+            display: inline;
+            margin: unset;
+            cursor: pointer;
+        }
+       
+    }
     /** estilos del filtro */
     .filtro{
         padding: 8px 0;
+        position: fixed;
+        left: -90%;
+        top:0;
+        height: calc(100% - 63px);
+        overflow: auto;
+        background-color: rgba(0,0,0,.5);
+        backdrop-filter: blur(5px);
+        transition: left .5s ease-out;
+        z-index:3;
+        min-width:280px;
+        padding:10px;
     }
     .filtro fieldset, .filtro fieldset legend{
             background-color: var(--secondary-color);
@@ -169,9 +249,20 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
         padding: 10px 0;
         cursor: pointer;
     }
+    .open-filter {
+        left: 0;
+    }
     @media (min-width: 916px) {
         
-        
+        .filtro{
+            position: inherit;
+            left: unset;
+            width: 100%;
+            min-width: unset;
+            max-height: unset;
+            background-color: transparent;
+            padding: 0;
+        }
         aside{
             grid-row-start: 1;
             grid-row-end: 8; 
@@ -189,31 +280,35 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
     const tamanos = document.querySelectorAll<HTMLInputElement>('input[name="altura"]')
     const colores = document.querySelectorAll<HTMLInputElement>('input[name="color"]')
     const articles = document.querySelectorAll<HTMLElement>('article.product-card')
+    const containerFliler = document.querySelector<HTMLElement>('.gridFilter')
+    const toolbar = document.querySelector<HTMLElement>('.toolbar')
+    const btnReset = document.querySelector<HTMLButtonElement>('#btnReset')
+
 
 
     if(tamanos.length > 0){
-        tamanos.forEach(t=>{
+        for(let t of tamanos){
             t.addEventListener('change',()=>{
                 const product = buscarProductos(t.value)
-                const exists = products.includes(product)
+                const exists = products.some(p=>p.textContent === product?.textContent)
                 if(!exists){
                     products.push(product)
+                    filterUI()
                 }
-                console.log(products)
             })
-        })
+        }
     }
     if(colores.length > 0){
-        colores.forEach(c=>{
+        for(let c of colores){
             c.addEventListener('change',()=>{
                 const product = buscarProductos(null,c.value)
-                const exists = products.includes(product)
+                const exists = products.some(p=>p.textContent === product?.textContent)
                 if(!exists){
                     products.push(product)
+                    filterUI()
                 }
-                console.log(products)
             })
-        })
+        }
     }
     if(resetFilters){
         resetFilters.addEventListener('click',()=>{
@@ -230,12 +325,14 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
                 const c = color?.textContent
                 if(a && dimenciones){
                     if(a.includes(dimenciones)){
-                        return article
+                        const clone = article.cloneNode(true)
+                        return clone
                     }
                 }
                 if(c && colores){
                     if(c.includes(colores)){
-                        return article
+                        const clone = article.cloneNode(true)
+                        return clone
                     }
                 }
             }
@@ -244,7 +341,33 @@ const mochilaUrl = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 
     function resetearFiltros(){
         products.length = 0
+    }
+
+    function filterUI(reset:boolean = false){
+        if(reset){
+            products.length = 0
+            if (containerFliler && toolbar){
+                containerFliler.innerHTML = ''
+                toolbar.style.opacity="0"
+            }
+            return
+        }
+       
+        if (containerFliler){
+            containerFliler.innerHTML = ''
+            products.forEach(p=>{
+                containerFliler.appendChild(p)
+            })
+        }
+        if (toolbar && btnReset){
+            btnReset.addEventListener('click',()=>{
+                resetearFiltros()
+                filterUI(true)
+            })
+            toolbar.style.opacity="1"
+        } 
 
     }
+
         
 </script>

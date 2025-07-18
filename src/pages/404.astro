@@ -1,0 +1,30 @@
+---
+import ArticleCard1 from "../components/ArticleCard1.astro";
+import Layout from "../layouts/Layout.astro";
+import { createFullUrlWithSlug } from "../utils/slugCreator";
+
+const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
+const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
+const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
+const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
+const canonical = createFullUrlWithSlug("/")
+
+---
+
+<Layout title="404" description="Página no encontrada" canonical="/404" >
+    <section>
+        <p>Pagina no encontrada</p>
+        <hr>
+        <p>Explora mas de nuestras categorías!</p>
+         
+    </section>
+    <section id="productos" >
+        <h2>Las cosas más destacadas de kuromi</h2>
+        <div class="products-grid">
+            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Cascos" slug={audSlug} />
+            <ArticleCard1 shortText="Mochilas y bolsos de kuromi" title="Mochilas de kuromi" imageUri="https://m.media-amazon.com/images/I/71uQgEcjj9L._AC_SX679_.jpg" anchorText="Bolsos" slug={mocSlug} />
+            <ArticleCard1 shortText="Peluches bonitos" title="Peluches de kuromi" imageUri="https://images-eu.ssl-images-amazon.com/images/I/51jNWILEKyL._AC_UL495_SR435,495_.jpg" anchorText="Peluches" slug={pelSlug} />
+			<ArticleCard1 shortText="funko pops bonitos" title="funko pops de kuromi" imageUri="https://m.media-amazon.com/images/I/71ZpkzK4syL.jpg" anchorText="funko pops" slug={fkSlug} />
+        </div>
+    </section>
+</Layout>
