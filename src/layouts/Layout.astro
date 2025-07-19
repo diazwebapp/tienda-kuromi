@@ -18,7 +18,7 @@ const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
-
+const blogSlug = createFullUrlWithSlug("blog")
 
 
 ---
@@ -30,7 +30,7 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
     <link rel="icon" href="/kuromi-cabeza.png" type="image/png">
     <link rel="apple-touch-icon" href="/kuromi-cabeza.png">
     
-    <title>{title} | Kuromilandia</title>
+    <title>{title} | Kuromiland</title>
     <meta name="description" content={description}>
     <link rel="canonical" href={canonical}>
     
@@ -51,10 +51,11 @@ const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
     <header>
         <div class="container" style="display: flex;justify-content:space-between;align-items:center;" >
             <a href="/" class="logo">
-                <strong class="site-name" >Kuromilandia</strong>
+                <strong class="site-name" >Kuromiland</strong>
             </a>
             
             <nav id="app-menu" >
+                <a href={blogSlug}>Blog</a>
                 <a href={mocSlug}>Mochilas</a>
                 <a href={audSlug}>Audifonos</a>
                 <a href={pelSlug}>Peluches</a>
