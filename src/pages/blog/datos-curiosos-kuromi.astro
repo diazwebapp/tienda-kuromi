@@ -5,6 +5,7 @@ import type { Article, OrganizationSchema } from "../../utils/schemas";
 import { createFullUrlWithSlug } from "../../utils/slugCreator";
 import { blogPosts } from "../../data/posts";
 import { Image } from "astro:assets";
+import Widget from "../../components/Widget.astro";
 const title = "37 Datos Curiosos de Kuromi que Todo Fan Debe Conocer"
 const description = "Desde su debut en 2005, esta chica rebelde ha conquistado corazones. Descubre 37 datos que debes conocer sobre Kuromi, la icónica rival de My Melody."
 const canonical = createFullUrlWithSlug("/blog/datos-curiosos-kuromi")
@@ -183,36 +184,11 @@ const schemaArticle:Article={
     </article>
 
     <aside>
-        <ul class="postsWidget" >
-            {
-                blogPosts.map(p=><li>
-                    <a href={p.canonical} title={p.headline} >
-                        <Image width="230" height="230" src={p.image[0]} alt={p.headline} loading="lazy" />
-                        <p>{p.headline}</p>
-                    </a>
-                </li>)
-            }
-        </ul>
+        <Widget posts={blogPosts} />
     </aside>
 </Layout>
 <style>
-    .postsWidget{
-        list-style: none;
-    }
-    .postsWidget li{
-        background-color: var(--secondary-color);
-        margin-bottom: 10px;
-        border-radius: 7px;
-        overflow: hidden;
-    }
-    .postsWidget p{
-        padding:10px;
-    }
-    .postsWidget img{
-        width: 100%;
-        height: auto;
-        object-fit: contain;
-    }
+    
     *{
         text-decoration: none;
         text-shadow: unset;
@@ -244,7 +220,6 @@ h3{
     display: grid ;
     grid-template-columns: 1fr 250px;
     gap: 20px;
-    padding: 20px 0;
     max-width: 1200px;
     margin: 0 auto;
 }

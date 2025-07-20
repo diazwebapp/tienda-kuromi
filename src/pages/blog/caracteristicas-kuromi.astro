@@ -1,0 +1,123 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { blogPosts } from "../../data/posts";
+import type { Article } from "../../utils/schemas";
+import {schemaOrganization} from '../../data/defaultSchemas'
+import PostHeader from "../../components/PostHeader.astro";
+import Widget from "../../components/Widget.astro";
+
+const post = blogPosts.find(p=>p.headline.toLowerCase().includes("caracteristicas de kuromi"))
+
+const schemaArticle:Article={
+    "@context":"https://schema.org",
+    "@type":"Article",
+    headline:post?.headline || "",
+    description:post?.description || "",
+    author:{
+        "@type":"Person",
+        name:post?.author || ""
+    },
+    dateModified:post?.dateModified ||"",
+    datePublished:post?.datePublished || "",
+    image:post?.image || [""],
+    publisher: schemaOrganization
+}
+---
+
+<Layout title={schemaArticle.headline} description={schemaArticle.description} canonical={post?.canonical || ""} schemas={[schemaArticle]} >
+    <article>
+        <PostHeader h1={post?.headline || ""} author={post?.author || ""} createDate={post?.datePublished || ""} description={post?.description || ""} />
+        <section>
+            <h2>Habilidades de kuromi</h2>
+            <h3>La Llave Melodía como metáfora existencial</h3>
+            <p>
+                El artefacto no solo manipula sueños, sino que reconfigura la estructura narrativa del inconsciente colectivo. Cuando "causa problemas", en realidad está exponiendo las fisuras en la realidad percibida - como si cada pesadilla inducida fuese un acto de cirugía espiritual, donde lo reprimido exige integración. La llave gira en sentido antihorario, desenroscando las certezas rígidas del ego.
+            </p>
+            <hr>
+            <h3>Intuición como percepción cuántica</h3>
+            <p>
+                Su habilidad para detectar amenazas naturales opera en tres niveles:
+            </p>
+            <ol>
+                <li><strong>Biofónica</strong>: Siente las microvibraciones que emiten los ecosistemas en peligro</li>
+                <li><strong>Cronosentido</strong>: Percibe desviaciones en el flujo temporal causadas por futuros ecolapsos</li>
+                <li><strong>Sombra-eco</strong>: Detecta cuando la "maldad" no es intrínseca, sino un desajuste entre humanidad y naturaleza</li>
+            </ol>
+            <hr>
+            <h3>Creatividad como práctica alquímica</h3>
+            <p>
+                Le gusta dibujar y escribir poemas. Sus poemas son grimorios vivientes - Los dibujos en sus cuadernos migran hacia las páginas siguientes cuando nadie mira..
+            </p>
+            <hr>
+            <h3>Liderazgo:</h3>
+            <p>
+                Kuromi puede liderar su propia banda de motociclistas, mostrando habilidades de liderazgo y tenacidad.
+            </p>
+        </section>
+
+        <section>
+            <h2>Cualidades y Caracteristicas de kuromi</h2>
+            <h3>Apariencia:</h3>
+            <p>Es un conejo blanco con cola de diablo, un sombrero de bufón negro y una calavera rosa en la frente.</p>
+            <hr>
+            <h3>Personalidad:</h3>
+            <p>Es traviesa, rebelde y le gusta romper las reglas.</p>
+            <hr>
+            <h3>Contraste con My Melody:</h3>
+            <p>Su personalidad y apariencia contrastan con la de My Melody, quien representa la bondad y la calma.</p>
+            <hr>
+            <h3>Amor por lo dramático y romántico:</h3>
+            <p>Aunque traviesa, Kuromi también tiene un lado que disfruta de lo dramático y lo romántico.</p>
+            <hr>
+            <h3>Carácter:</h3>
+            <p>A pesar de su actitud rebelde, Kuromi tiene un buen corazón y se preocupa por sus amigos.</p>
+        </section>
+    </article>
+    <aside>
+        <Widget posts={blogPosts} />
+    </aside>
+</Layout>
+
+<style>
+    
+    *{
+        text-decoration: none;
+        text-shadow: unset;
+        color: var(--primary-color);
+    }
+    article{
+        background-color: var(--secondary-color);
+        padding: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+section {
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+h3{
+    color: var(--decorative-color);
+    margin: 30px auto;
+}
+h3{
+    color: var(--decorative-color-dark);
+}
+hr{
+    border-color: var(--shadows-color);
+}
+ul, ol{
+    padding-left: 30px;
+    margin-bottom: 20px;
+}
+</style>
+<style is:inline >
+    main{
+    display: grid ;
+    grid-template-columns: 1fr 250px;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+</style>

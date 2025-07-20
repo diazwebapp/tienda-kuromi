@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import type { BlogPost} from "../data/posts";
+type Props={
+    posts? : BlogPost[]
+}
+
+const {posts} = Astro.props as Props
+
+---
+<ul class="postsWidget" >
+    {
+        posts?.map(p=><li>
+            <a href={p.canonical} title={p.headline} >
+                <Image width="230" height="230" src={p.image[0]} alt={p.headline} loading="lazy" />
+                <p>{p.headline}</p>
+            </a>
+        </li>) 
+    }
+</ul>
+<style>
+    .postsWidget{
+        list-style: none;
+    }
+    .postsWidget li{
+        background-color: var(--secondary-color);
+        margin-bottom: 10px;
+        border-radius: 7px;
+        overflow: hidden;
+    }
+    .postsWidget p{
+        padding:10px;
+    }
+    .postsWidget img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+</style>

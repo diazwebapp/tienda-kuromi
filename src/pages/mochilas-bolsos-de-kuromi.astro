@@ -70,9 +70,9 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
     <WithSidebar>
         <aside>
             <form class="filtro" id="filter-box">
-                <p>Filtrar</p>
+                <strong>Filtrar</strong>
                 <fieldset id="dimenciones" >
-                    <p>Dimenciones 📏</p>
+                    <strong>Dimenciones 📏</strong>
                     {
                         dimenciones.map((d) => (
                             <label>
@@ -84,7 +84,7 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
                 </fieldset>
 
                 <fieldset id="colores" >
-                    <p>Por color 🎨</p>
+                    <strong>Por color 🎨</strong>
                     {
                         colores.map((color) => (
                             <label>

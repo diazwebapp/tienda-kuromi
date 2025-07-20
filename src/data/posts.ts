@@ -24,7 +24,16 @@ export const blogPosts:BlogPost[]=[
         description:"Desde su debut en 2005, esta chica rebelde ha conquistado corazones. Descubre 37 datos que debes conocer sobre Kuromi, la icónica rival de My Melody.",
         canonical : createFullUrlWithSlug("/blog/datos-curiosos-kuromi"),
         datePublished : "2025-07-18",
-        dateModified: "Kuromiland",
+        dateModified: "2025-07-19",
         image:["https://www.pngtank.com/storage/thumbnails/64970e24d157c.png"]
+    },
+    {
+        author:"Kuromiland",
+        headline:"Habilidades y caracteristicas de Kuromi",
+        description:"Conoce a fondo las habilidades y características que definen a Kuromi. Un análisis completo de la personalidad, gustos y lo que hace a este personaje tan especial.",
+        canonical : createFullUrlWithSlug("/blog/caracteristicas-kuromi"),
+        datePublished : "2025-07-19",
+        dateModified: "2025-07-19",
+        image:["https://files.merca20.com/uploads/2024/11/kuromi-2.jpg"]
     }
 ]
