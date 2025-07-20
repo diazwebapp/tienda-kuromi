@@ -107,6 +107,19 @@ export const mochilas:Mochila[]=[
         "tienda":"Amazon"
     },
     {
+        "nombre":"Mochila de kuromi de peluche 42 cm",
+        "imagen" :"https://m.media-amazon.com/images/I/610hVOkCjhL._AC_SX679_.jpg",
+        "precio":28.00,
+        "caracteristicas":{
+            "dimensiones":"12 x 24 x 42 cm",
+            "color":"blanco, negro"
+        },
+        "rating":4.3,
+        "ratingCount":4,
+        "refLink":"https://amzn.to/4kOZCAK",
+        "tienda":"Amazon"
+    },
+    {
         "nombre":"Bolso de kuromi escolar pana niñas",
         "imagen" :"https://m.media-amazon.com/images/I/71xetwiim4L._AC_SX679_.jpg",
         "precio":20.00,

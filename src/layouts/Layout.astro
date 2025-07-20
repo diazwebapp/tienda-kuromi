@@ -9,7 +9,7 @@ type Props={
     searchConsoleCode?:string
     canonical:string
     filtro?:boolean
-    schemas?:any[]
+    schemas:any[]
 }
 
 const {title,description,lang="es",searchConsoleCode,canonical,filtro,schemas} = Astro.props as Props
@@ -38,13 +38,12 @@ const blogSlug = createFullUrlWithSlug("blog")
     <meta property="og:title" content={title}>
     <meta property="og:description" content={description}>
     {
-        schemas?(
-            schemas.map((schema)=>{
+        schemas.map((schema)=>{
                 return (
                     <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} > </script>
                 )
             })
-        ):null
+        
     }
 </head>
 <body>
@@ -242,7 +241,7 @@ const blogSlug = createFullUrlWithSlug("blog")
     body header:has(input:checked) #app-menu{
         right: 0;
     }
-	.container,section,article,aside {
+	.container,section,article,aside{
 		max-width: 1200px;
 		margin: 0 auto;
         width: 100%;
@@ -274,8 +273,8 @@ const blogSlug = createFullUrlWithSlug("blog")
         box-shadow: 0px 1px 3px var(--primary-color);
     }
     @media (min-width: 768px) {
-		.container {
-			padding: 0 20px;
+		.container,aside {
+			padding: 0 ;
 		}
         body{
             font-size:18px;

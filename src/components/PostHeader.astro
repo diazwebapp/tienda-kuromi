@@ -1,0 +1,33 @@
+---
+type Props={
+    h1:string
+    createDate:string
+    author:string
+    description:string
+}
+
+const {h1,createDate,author,description} = Astro.props as Props
+---
+<header>
+    <h1>
+      {h1}
+    </h1>
+    <p>
+      {description}
+    </p>
+    
+    <div class="post-meta">
+          Publicado por 👤 {author} - <time datetime={createDate}>📅 {createDate}</time>
+    </div>
+</header>
+
+<style>
+   header{
+        background: linear-gradient(135deg,rgba(255, 20, 147, 0.102) 0%,rgba(139, 0, 139, 0.102) 100%);
+        padding: 30px 20px;
+        .post-meta{
+            color:var(--decorative-color-dark);
+        }
+    }
+    
+</style>

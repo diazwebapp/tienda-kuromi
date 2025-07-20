@@ -1,14 +1,14 @@
 ---
-import ArticleCard1 from "../../components/ArticleCard1.astro";
+import ArticleCard2 from "../../components/ArticleCard2.astro";
 import StyleGridContainer1 from "../../components/StyleGridContainer1.astro";
 import Layout from "../../layouts/Layout.astro";
 import { createFullUrlWithSlug } from "../../utils/slugCreator";
+import {blogPosts} from '../../data/posts'
 const canonical = createFullUrlWithSlug("/blog/")
-const post_figuras = createFullUrlWithSlug("/blog/figuras-de-kuromi/")
 
 ---
 
-<Layout title="Blog" description="colección de noticias y tutos de kuromi." canonical={canonical} >
+<Layout title="Blog" description="colección de noticias y tutos de kuromi." canonical={canonical} schemas={[]} >
     <section>
       <h1>Blog de kuromi</h1>
       <p>
@@ -17,7 +17,11 @@ const post_figuras = createFullUrlWithSlug("/blog/figuras-de-kuromi/")
     </section>
     <section>
       <StyleGridContainer1 widthCard="300px" >
-        <ArticleCard1 title="Figuras coleccionables de kuromi" slug={post_figuras} imageUri="https://m.media-amazon.com/images/I/51xJMBRsyhL.jpg" anchorText="Figuras de kuromi" shortText="Si pensabas que la pequeña enemiga de My Melody solo existía en disco, prepárate" />
+        {
+          blogPosts.map(p=>(
+            <ArticleCard2 title={p.headline} imageUri={p.image[0]} shortText={p.description} slug={p.canonical} />
+          ))
+        }
       </StyleGridContainer1>
     </section>
 

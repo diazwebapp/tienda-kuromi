@@ -1,0 +1,251 @@
+---
+import PostHeader from "../../components/PostHeader.astro";
+import Layout from "../../layouts/Layout.astro";
+import type { Article, OrganizationSchema } from "../../utils/schemas";
+import { createFullUrlWithSlug } from "../../utils/slugCreator";
+import { blogPosts } from "../../data/posts";
+import { Image } from "astro:assets";
+const title = "37 Datos Curiosos de Kuromi que Todo Fan Debe Conocer"
+const description = "Desde su debut en 2005, esta chica rebelde ha conquistado corazones. Descubre 37 datos que debes conocer sobre Kuromi, la icónica rival de My Melody."
+const canonical = createFullUrlWithSlug("/blog/datos-curiosos-kuromi")
+const createDate = "2025-07-18"
+const authorName = "Kuromiland"
+
+const schemaOrga:OrganizationSchema={
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "@id":createFullUrlWithSlug("/"),
+    name:"Kuromiland",
+    url:createFullUrlWithSlug("/"),
+    logo:"https://dekuromy.store/kuromi-cabeza.png",
+    email:"diazwebapp@gmail.com"
+}
+const schemaArticle:Article={
+    "@context":"https://schema.org",
+    "@type":"Article",
+    author:{
+        "@type":"Person",
+        name:"diazwebapp",
+    },
+    headline:title,
+    description,
+    datePublished:createDate,
+    dateModified:createDate,
+    image:["https://dekuromy.store/kuromi-cabeza.png"],
+    publisher:schemaOrga
+}
+
+---
+
+<Layout title={title} canonical={canonical} description={description} schemas={[schemaArticle]} >
+    
+    <article>
+        <PostHeader h1={title} createDate={createDate} author={authorName} description={"¡Hola, fanáticos de Kuromi! Desde su debut en 2005, esta chica rebelde y encantadora ha conquistado corazones con su personalidad única, convirtiéndose en una de las figuras más icónicas de Sanrio. Aunque al principio era solo conocida por su rivalidad con My Melody, Kuromi forjó su propio camino con una personalidad desafiante y desenfadada. ¡Prepárate para disfrutar los 37 datos que debes conocer sobre ella!"} />
+
+        <section>
+            <h2>Orígenes y Diseño</h2>
+            <h3>1. La Eterna Rival de My Melody</h3>
+            <p>Kuromi es un personaje del universo <em>Onegai My Melody</em>, conocida por ser la rival y doppelgänger de My Melody. Este travieso conejo blanco destaca por su sombrero de bufón negro, adornado con una calavera rosa, y su cola negra en forma de flecha de diablillo.</p>
+            
+            <h3>2. Debut en 2005</h3>
+            <p>Debutó en 2005 como la antagonista del anime <em>Onegai My Melody</em>, representando la contraparte oscura y rebelde de My Melody. Sin embargo, en series recientes como <em>Hello Kitty and Friends: Supercute Adventures</em>, su personalidad ha evolucionado hacia un papel más amistoso.</p>
+
+            <h3>3. Su Creadora</h3>
+            <p>Fue creada por la talentosa artista Miyuki Okumura, reconocida también por su trabajo en las franquicias Cinnamoroll y Jewelpet. Su diseño único y personalidad carismática la convirtieron rápidamente en un personaje muy popular.</p>
+
+            <h3>4. El Significado de su Nombre</h3>
+            <p>El nombre "Kuromi" es una combinación de dos palabras japonesas: <strong>Kuro (黒)</strong>, que significa "negro", y <strong>Mi (美)</strong>, que se traduce como "belleza".</p>
+
+            <h3>5. Inspiración de su Diseño</h3>
+            <p>La apariencia de Kuromi está inspirada en personajes de animación de principios del siglo XX y de la década de 1990, específicamente Impmon de la serie <em>Digimon</em> y Pikachu de la franquicia <em>Pokémon</em>.</p>
+
+            <h3>6. ¿Gato o Conejo?</h3>
+            <p>Kuromi es un <strong>conejo blanco</strong>. Es un personaje antropomórfico, lo que significa que tiene apariencia de conejo pero con rasgos y comportamientos humanoides.</p>
+        </section>
+
+        <Image loading="lazy" width="640" height="446" src="https://media.tenor.com/ayJxUgl6EBIAAAAe/onegai-my-melody-kuromi.png" alt="Kuromi y Baku en una escena del anime Onegai My Melody" style="width:100%; max-width:640px; border-radius: 8px; margin: 2rem auto; display: block;object-fit: contain;">
+
+        <section>
+            <h2>La Trama de "Onegai My Melody"</h2>
+            <h3>7. La Llave Melodía</h3>
+            <p>En <em>Onegai My Melody</em>, Kuromi es una fugitiva de Mary Land que posee la "Llave Melodía", un artefacto capaz de corromper los sueños. Junto a su compañero Baku, planea recolectar 100 notas negras para revivir al Espíritu del Poder Oscuro y vengarse de My Melody.</p>
+
+            <h3>8. Su Primer Amor Humano</h3>
+            <p>Durante su aventura en el mundo humano, Kuromi conoce a Keiichi Hiiragi, un popular estudiante de secundaria con quien forma una alianza y de quien termina enamorándose perdidamente.</p>
+
+            <h3>9. La Misión de My Melody</h3>
+            <p>Para detenerla, My Melody llega al mundo humano equipada con el "Melody Takt", "Melody Candies" y la "Melody Box", con la misión de reunir 100 notas rosas. Allí conoce a Uta Yumeno y sus amigos, quienes se convierten en sus aliados.</p>
+
+            <h3>10. El Origen de la Rivalidad</h3>
+            <p>Aunque muchos piensan que siempre fueron rivales, Kuromi y My Melody solían ser amigas. Sin embargo, tras varios malentendidos (como cuando My Melody arrancó una página de su cuaderno), Kuromi llegó a creer que ella intentaba arruinar su vida, lo que originó su actitud competitiva.</p>
+
+            <h3>11. Rivalidades Clásicas</h3>
+            <p>El concepto de una rivalidad entre personajes opuestos como la de Kuromi y My Melody puede recordar a dinámicas clásicas como la de Mario y Wario. Dentro del propio universo de Sanrio, también existe la rivalidad entre Hello Kitty y Fifi.</p>
+
+            <h3>12. Reconciliación Temprana</h3>
+            <p>Curiosamente, Kuromi y My Melody dejaron atrás sus rivalidades mucho antes de lo que parece. En el cortometraje <em>Onegai My Melody: You & I</em>, ya se hicieron amigas, mucho antes de su relación en <em>Hello Kitty and Friends: Supercute Adventures</em>.</p>
+        </section>
+
+        <section>
+            <h2>Gustos y Pasiones</h2>
+            <h3>13. Su Cumpleaños es en Halloween</h3>
+            <p>No debería ser una sorpresa que Halloween sea su festividad favorita. La celebración combina perfectamente con su estilo gótico y su amor por las travesuras. Además, ¡el 31 de octubre es el día de su cumpleaños!</p>
+
+            <h3>14. Gustos Culinarios</h3>
+            <p>Sus gustos culinarios son tan llamativos como ella. Entre sus platillos predilectos están la carne, las cebollas encurtidas, las chalotas y todo lo que incluya calabaza.</p>
+
+            <h3>15. Sueña con ser una Estrella del Pop</h3>
+            <p>Kuromi sueña con convertirse en una superestrella del pop, mostrando su constante deseo de destacar. Este objetivo refleja su ambición y su voluntad de brillar más que los demás con su energía desenfadada y su actitud punk.</p>
+        </section>
+
+        <Image loading="lazy" width="300" height="300" src="https://static.vecteezy.com/system/resources/previews/024/480/355/non_2x/cute-bunny-playing-guitar-on-the-concert-stage-free-vector.jpg" alt="Kuromi tocando su guitarra eléctrica violeta" style="width:100%; max-width:500px; border-radius: 8px; margin: 2rem auto; display: block;aspect-ratio: 1:1;object-fit:contain;">
+
+        <section>
+            <h2>Kuromi y la Música</h2>
+            <h3>16. Amor por el Rock</h3>
+            <p>Aunque aspira al pop, su estética gótica y su personalidad rebelde revelan su verdadero amor por géneros como el rock y el heavy metal. Esto se ve reflejado en <em>Hello Kitty and Friends: Supercute Adventures</em>, donde luce una guitarra eléctrica violeta.</p>
+
+            <h3>17. Fan del K-Pop</h3>
+            <p>Con el paso del tiempo, Kuromi también se ha vuelto una gran fan del K-Pop. En el episodio "Kuromi's K-Pop Drop", se la ve muy emocionada por un concierto de este género.</p>
+
+            <h3>18. Colaboración con (G)I-DLE</h3>
+            <p>En la vida real, su grupo favorito es la banda femenina (G)I-DLE, y su canción preferida es "Tomboy". Incluso tuvo una colaboración oficial con ellas que incluyó mucha mercancía.</p>
+
+            <h3>19. "Chicky but Charmin"</h3>
+            <p>Kuromi no solo tiene su propia música, sino que también ha colaborado con artistas populares. Un ejemplo es la canción "Chicky but Charmin", escrita por M-STNS.</p>
+
+            <h3>20. Actuaciones en Vivo</h3>
+            <p>También ha tenido actuaciones en vivo. Kuromi y My Melody participaron en el espectáculo "Kuromi Live!" en el festival de música "NO LIMITS".</p>
+
+            <h3>21. El Grupo "G-Idol"</h3>
+            <p>Kuromi también es parte de la agrupación "G-Idol", un grupo que se presenta en el parque temático Harmony Land junto a Hello Kitty, Bonbonribbon, Wish me mell y My Melody.</p>
+        </section>
+
+        <section>
+            <h2>Amigos, Amores y Aventuras</h2>
+            <h3>22. Su Corazón Late por Badtz-Maru</h3>
+            <p>A Kuromi le encantan los chicos guapos, y en <em>Hello Kitty and Friends: Supercute Adventures</em>, su corazón late por el rudo y adorable pingüino Badtz-Maru.</p>
+
+            <h3>23. Amores Pasados</h3>
+            <p>Anteriormente estuvo profundamente enamorada de Keiichi Hiiragi, del príncipe Sorara e incluso de un joven león que también atraía a My Melody. En <em>Kuromi's Pretty Journey</em>, su amor se dirige hacia Nico.</p>
+
+            <h3>24. Su Propia Serie: "Kuromi's Pretty Journey"</h3>
+            <p>Su popularidad es tan grande que protagoniza su propia serie spin-off, lanzada en YouTube en febrero de 2023. La trama sigue a Kuromi en su aventura para encontrar a su hermana mayor, Romina.</p>
+
+            <h3>25. La Pandilla "Kuromi's 5"</h3>
+            <p>Kuromi es la líder de "Kuromi's 5", un grupo de motociclistas (aunque en realidad viajan en triciclos). Su pandilla incluye a Nyanmi, su mejor amiga; Wanmi, un perro naranja; Konmi, un zorro blanco; y Chumi, una rata gris y blanca.</p>
+
+            <h3>26. Su Fiel Compañero Baku</h3>
+            <p>Tiene a su amigo y leal compañero Baku, un tapir morado con orejas caídas. Es su cómplice en todas las aventuras y travesuras, siempre dispuesto a apoyarla.</p>
+
+            <h3>27. Su Mascota, el Murciélago Lamir</h3>
+            <p>Además, tiene una encantadora mascota llamada Lamir, un pequeño murciélago con una personalidad traviesa que combina perfectamente con la suya y la acompaña en sus aventuras.</p>
+        </section>
+
+        <Image loading="lazy" width="300" height="300" src="https://www.pngtank.com/storage/thumbnails/64970e24d157c.png" alt="Kuromi saludando con su actitud característica" style="width:100%; max-width:500px; border-radius: 8px; margin: 2rem auto; display: block;object-fit: contain;">
+
+        <section>
+            <h2>Habilidades y Curiosidades</h2>
+            <h3>28. Piloto de Mechas</h3>
+            <p>Kuromi tiene una habilidad poco conocida: ¡es piloto de mechas! En <em>Onegai My Melody</em>, su robot de combate se transforma a partir de su teléfono. ¡Súbete al EVA, Kuromi!</p>
+
+            <h3>29. Su Punto Débil</h3>
+            <p>Su punto débil es su cola. Si alguien se la pisa o tira de ella, caería inconsciente al instante.</p>
+
+            <h3>30. La Calavera Emocional</h3>
+            <p>La calavera rosa en su frente refleja sus emociones. En <em>Hello Kitty and Friends: Supercute Adventures</em>, parpadea y cambia de expresión según su estado de ánimo.</p>
+
+            <h3>31. Un Icono Anti-Kawaii</h3>
+            <p>Una de las razones de su alta popularidad es su contraste con el típico estilo "kawaii" de Sanrio. Representa la oscuridad frente a la luz de My Melody, combinando una personalidad punk y rebelde con un toque de feminidad.</p>
+
+            <h3>32. Éxito en los Rankings</h3>
+            <p>Kuromi brilla en el Sanrio Character Ranking, manteniéndose en el top 10. En 2024, alcanzó un impresionante tercer lugar.</p>
+
+            <h3>33. Un Debut Tardío</h3>
+            <p>Es curioso que, a pesar de su enorme popularidad, el debut de Kuromi en 2005 fue significativamente tardío si lo comparamos con el de My Melody, quien hizo su primera aparición en 1975, ¡tres décadas antes!</p>
+        </section>
+
+        <section>
+            <h2>Detrás del Personaje</h2>
+            <h3>34. La Voz de Naruto</h3>
+            <p>La talentosa actriz de voz japonesa, Junko Takeuchi, conocida por dar vida a Kuromi, también es la voz detrás de Naruto Uzumaki en la icónica serie <em>Naruto</em>.</p>
+
+            <h3>35. La Voz en Latinoamérica</h3>
+            <p>En Latinoamérica, la voz de Kuromi corre a cargo de la talentosa Ivana Ochoa, a quien puedes reconocer por ser la voz de Flora en <em>Winx Club</em> o Setsuna Tokage en <em>My Hero Academia</em>.</p>
+
+            <h3>36. El Proyecto "Kuromify the World"</h3>
+            <p>El proyecto "Kuromify the World" fue lanzado en octubre de 2021. Su objetivo es inspirar a todos a ser su mejor versión, convirtiendo a los fanáticos en verdaderos "KUROMIES".</p>
+
+            <h3>37. Inspiración para Otros</h3>
+            <p>El éxito de Kuromi ha inspirado a otros personajes dentro de Sanrio, como es el caso de Lloromannic (o Joro manic), un dúo diabólico del universo Cinnamoroll llamados Berry y Cherry, quienes son rivales de Cinnamoroll.</p>
+        </section>
+
+    </article>
+
+    <aside>
+        <ul class="postsWidget" >
+            {
+                blogPosts.map(p=><li>
+                    <a href={p.canonical} title={p.headline} >
+                        <Image width="230" height="230" src={p.image[0]} alt={p.headline} loading="lazy" >
+                        <p>{p.headline}</p>
+                    </a>
+                </li>)
+            }
+        </ul>
+    </aside>
+</Layout>
+<style>
+    .postsWidget{
+        list-style: none;
+    }
+    .postsWidget li{
+        background-color: var(--secondary-color);
+        margin-bottom: 10px;
+        border-radius: 7px;
+        overflow: hidden;
+    }
+    .postsWidget p{
+        padding:10px;
+    }
+    .postsWidget img{
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+    *{
+        text-decoration: none;
+        text-shadow: unset;
+        color: var(--primary-color);
+    }
+    article{
+        background-color: var(--secondary-color);
+        padding: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+section {
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+h2{
+    color: var(--decorative-color);
+    margin: 30px auto;
+}
+h3{
+    color: var(--decorative-color-dark);
+}
+
+</style>
+<style is:inline >
+    main{
+    display: grid ;
+    grid-template-columns: 1fr 250px;
+    gap: 20px;
+    padding: 20px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+</style>

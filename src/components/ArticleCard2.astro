@@ -1,0 +1,57 @@
+---
+import { Image } from "astro:assets";
+type Props={
+    title:string
+    imageUri:string
+    slug:string
+    shortText:string
+}
+const {title,imageUri,slug, shortText} = Astro.props as Props
+---
+ <a href={slug}>
+<article>
+    <header>
+        <Image width={320} height={180} alt=`image de ${title}` src={imageUri} />
+    </header>
+    <div class="body-article" >
+        <b>{title}</b>
+        <p>{shortText}</p>
+    </div>
+    <footer>
+       
+    </footer>
+</article>
+</a>
+<style>
+    article{
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        border-radius: 16px;
+        background-color: var(--secondary-color);
+        overflow: hidden;
+    }
+    .body-article *{
+        color:var(--primary-color);
+    }
+    img{
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4/3;
+        background-color: black;
+        object-fit: cover;
+    }
+    article div, article footer{
+        padding: 0 20px;
+    }
+    article p{
+        margin: 20px 0;
+    }
+    article div{
+        margin-top: 20px;
+    }
+    article footer{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
