@@ -8,7 +8,8 @@ const title = "Figuras coleccionables de kuromi"
 const description = "Si pensabas que la pequeña enemiga de My Melody solo existía en vinilo, prepárate: hay un universo de estatuillas, peluches articulados y miniaturas que rinden culto a su lado rebelde."
 const createDate = "2025-07-18"
 const canonical = createFullUrlWithSlug("/blog/figuras-de-kuromi/")
-
+const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
+const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const schemaOrga:OrganizationSchema={
     "@context":"https://schema.org",
     "@type":"Organization",
@@ -108,8 +109,7 @@ const schemaArticle:Article={
         <header>
             <h3 >Peluches coleccionables</h3>
             <p>
-            Desde keychains de 8 cm hasta peluches de 40 cm de Sentosha o Sanrio.
-            Algunos traen sonido o luz LED en el corazón del cráneo.
+                Peluches desde 8cm hasta 70cm gigantes, conoce nuestra <a href={pelSlug} title="Catálogo de peluches de Kuromi" >cloección de peluches aquí</a>.
             </p>
         </header>
         <div class="img-container">
@@ -199,7 +199,7 @@ const schemaArticle:Article={
           <h3>Funko Pop</h3>
           <p>
             Revisa nuestra
-            <a href="/funko-de-kuromi" title="Catálogo Funko Pop Kuromi">
+            <a href={fkSlug} title="Catálogo Funko Pop Kuromi">
               colección oficial
             </a>
             con envío 24 h y garantía anti-falsificaciones.
