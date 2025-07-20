@@ -164,7 +164,7 @@ type Funko={
         edicion:number
         ratingCount:number
         tienda: "Amazon" | "Ebay"
-        refLink?: string
+        refLink: string
     }
 
     export const funkos:Funko[]=[

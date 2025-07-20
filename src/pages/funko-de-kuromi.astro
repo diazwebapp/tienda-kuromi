@@ -4,14 +4,51 @@ import { funkos } from "../data/juguetes"
 import ProductCard1 from "../components/ProductCard1.astro"
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas"
 const title = "Funko pop de Kuromi - Coleccion completa"
 const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de funko pop"
 
 const canonical = createFullUrlWithSlug("funko-de-kuromi")
 
+const productsCollection = funkos.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:m.refLink,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:title,
+    description:description,
+    url:canonical,
+    includesObject:productsCollection
+}
+
+
 ---
 
-<Layout title={title} description={description} canonical={canonical} >
+<Layout title={title} description={description} canonical={canonical} schemas={[schemaColection]}} >
     <section>
         <h1>funko pop de Kuromi | Encuentra tu Compañero Ideal</h1>
         <p>

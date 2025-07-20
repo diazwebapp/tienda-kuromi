@@ -4,12 +4,49 @@ import { audifonos } from "../data/audifonos"
 import ProductCard1 from "../components/ProductCard1.astro"
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas"
 const title = "Audifonos de kuromi"
 const description = "Adquiere audifonos de kuromi con la mejor calidad del mundo"
 const canonical = createFullUrlWithSlug("audifonos-de-kuromi")
+
+const productsCollection = audifonos.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:m.refLink,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:title,
+    description:description,
+    url:canonical,
+    includesObject:productsCollection
+}
+
 ---
 
-<Layout title={title} description={description} canonical={canonical}>
+<Layout title={title} description={description} canonical={canonical} schemas={[schemaColection]}} >
     <section>
         <h1>Audifonos de kuromi</h1>
         <p>
