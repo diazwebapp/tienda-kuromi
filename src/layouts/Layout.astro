@@ -129,10 +129,10 @@ const blogSlug = createFullUrlWithSlug("blog")
     animation: 0.8s ease-in both move-in;
 }
     :root{
-        --primary-color:#2C2C2C;
-        --secondary-color:#fff;
-        --decorative-color:#A30057;
-        --decorative-color-dark:#8B008B;
+        --primary-color:#242424;
+        --secondary-color:#ffffff;
+        --decorative-color:#5C2AE5 ;
+        --decorative-color-2:#981675;
         --shadow-color:#e2e2e2;
     }
     	* {
@@ -145,7 +145,7 @@ const blogSlug = createFullUrlWithSlug("blog")
 	body {
 		font-family: 'Poppins', sans-serif;
 		width: 100%;
-		background: linear-gradient(135deg, var(--decorative-color) 0%, var(--decorative-color-dark) 100%);
+		background: linear-gradient(165deg, var(--decorative-color) 10%, var(--decorative-color-2) 100%);
 		color: var(--primary-color);
         display: flex;
         flex-direction: column;
@@ -207,7 +207,7 @@ const blogSlug = createFullUrlWithSlug("blog")
         z-index: 3;
     }
     #btn-toggle-menu:hover span{
-        background-color: var(--decorative-color-dark);
+        background-color: var(--decorative-color-2);
     }
     #btn-toggle-menu span{
         background:var(--primary-color);
@@ -259,7 +259,7 @@ const blogSlug = createFullUrlWithSlug("blog")
         padding: 10px 20px;
         box-shadow: 0px 0px 3px var(--primary-color);
         color: var(--secondary-color);
-        background: linear-gradient(90deg,var(--decorative-color) 0%, var(--decorative-color-dark) 100%);
+        background: linear-gradient(150deg,var(--decorative-color) 40%, var(--decorative-color-2) 100%);
         display: table;
         text-align: center;
         margin: 10px auto;
@@ -272,7 +272,7 @@ const blogSlug = createFullUrlWithSlug("blog")
         border-radius: .6rem;
     }
     .cta:hover{
-        background-color: var(--decorative-color-dark);
+        background-color: var(--primary-color);
         box-shadow: 0px 1px 3px var(--primary-color);
     }
     @media (min-width: 768px) {

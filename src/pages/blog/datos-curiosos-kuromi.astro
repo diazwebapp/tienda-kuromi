@@ -211,16 +211,18 @@ h2{
     margin: 30px auto;
 }
 h3{
-    color: var(--decorative-color-dark);
+    color: var(--decorative-color-2);
 }
 
 </style>
 <style is:inline >
-    main{
-    display: grid ;
-    grid-template-columns: 1fr 250px;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+    @media (min-width: 768px) {
+        main{
+            display: grid ;
+            grid-template-columns: 1fr 250px;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    }
 </style>

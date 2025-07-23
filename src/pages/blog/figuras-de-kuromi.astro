@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import Layout from "../../layouts/Layout.astro";
 import type { Article, OrganizationSchema } from "../../utils/schemas";
 import { createFullUrlWithSlug } from "../../utils/slugCreator";
+import { blogPosts } from "../../data/posts";
+import Widget from "../../components/Widget.astro";
 
 const title = "Figuras coleccionables de kuromi"
 const description = "Si pensabas que la pequeña enemiga de My Melody solo existía en vinilo, prepárate: hay un universo de estatuillas, peluches articulados y miniaturas que rinden culto a su lado rebelde."
@@ -264,6 +266,9 @@ const schemaArticle:Article={
     </section>
     </footer>
   </article>
+  <aside>
+    <Widget posts={blogPosts}  />
+  </aside>
 </Layout>
 
 <style>
@@ -304,7 +309,7 @@ const schemaArticle:Article={
         gap: 20px;
         
         &&h3{
-            color:var(--decorative-color-dark);
+            color:var(--decorative-color-2);
         }
         &&header{
             border-radius: unset;
@@ -345,7 +350,7 @@ const schemaArticle:Article={
             padding: 10px;
         }
         &&div h3{
-            color: var(--decorative-color-dark);
+            color: var(--decorative-color-2);
         }
         }
     details{
@@ -355,7 +360,7 @@ const schemaArticle:Article={
         border-radius: 10px;
         cursor:pointer;
         &&summary{
-            color: var(--decorative-color-dark);
+            color: var(--decorative-color-2);
         }
     }
     img{
@@ -372,4 +377,15 @@ const schemaArticle:Article={
         grid-template-columns: 1fr 250px;
       }
     }
+</style>
+<style is:inline >
+  @media (min-width: 768px) {
+      main{
+          display: grid ;
+          grid-template-columns: 1fr 250px;
+          gap: 20px;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+  }
 </style>
