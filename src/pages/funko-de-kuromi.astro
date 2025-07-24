@@ -5,9 +5,13 @@ import ProductCard1 from "../components/ProductCard1.astro"
 import StyleGridContainer1 from "../components/StyleGridContainer1.astro"
 import { createFullUrlWithSlug } from "../utils/slugCreator"
 import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas"
+
+const funko_celebration = funkos.filter(f => f.caracteristicas?.ocasion === "Celebraciones")
+const funko_especial = funkos.filter(f => f.caracteristicas?.ocasion === "Especial");
+const funko_clasicos = funkos.filter(f => !f.caracteristicas);
+
 const title = "Funko pop de Kuromi - Coleccion completa"
 const description = "Adéntrate en el adorable y travieso mundo de Kuromi con nuestra exclusiva selección de funko pop"
-
 const canonical = createFullUrlWithSlug("funko-de-kuromi")
 
 const productsCollection = funkos.map((m) => {
@@ -48,15 +52,21 @@ const schemaColection:ProductCollectionSchema={
 
 ---
 
-<Layout title={title} description={description} canonical={canonical} schemas={[schemaColection]}} >
+<Layout title={title} description={description} canonical={canonical} schemas={[schemaColection]} >
     <section>
-        <h1>funko pop de Kuromi | Encuentra tu Compañero Ideal</h1>
+        <h1>Los Mejores Funkos de Kuromi para Tu Colección</h1>
         <p>
-            Desde el tamaño perfecto para tu colección hasta el compañero ideal para tus aventuras diarias, aquí encontrarás el funko pop de Kuromi que estabas buscando.
+            ¿Te encanta Kuromi? ¡Estás en el lugar correcto! Los Funkos de Kuromi son geniales para coleccionar. Te ayudamos a encontrar el Funko ideal. Así, tu colección se verá increíble.
+            <br>
+            <p>Existen diversas versiones del <strong>funko kuromi</strong>, de ocaciones únicas que la hacen especial. Desde poses icónicas hasta atuendos temáticos, la variedad es amplia. A continuación, te presentamos algunos de los modelos más populares y sus diferencias:</p>
         </p>
+    </section>
+    <section>
+        <h2>Edicion para celebraciones</h2>
+        <br>
         <StyleGridContainer1 widthCard="250px">
             {
-                funkos.map((p)=>(
+                funko_celebration.map((p)=>(
                     <ProductCard1 
                     nombre={p.nombre} 
                     imagen={p.imagen} 
@@ -71,11 +81,53 @@ const schemaColection:ProductCollectionSchema={
         </StyleGridContainer1>
     </section>
     <section>
+        <section>
+            <h2>Edicion especial</h2>
+            <p>Estos funko pop son ediciones de coleccion premium</p>
+            <StyleGridContainer1 widthCard="250px">
+                {
+                    funko_especial.map((p)=>(
+                        <ProductCard1 
+                        nombre={p.nombre} 
+                        imagen={p.imagen} 
+                        precio={p.precio}
+                        rating={p.rating}
+                        ratingCount={p.ratingCount}
+                        refLink={p.refLink}
+                        tienda={p.tienda}
+                        />
+                    ))
+                }
+            </StyleGridContainer1>
+        </section>
+        <section>
+            <h2>Edicion clasica</h2>
+            <br>
+            <StyleGridContainer1 widthCard="250px">
+                {
+                    funko_clasicos.map((p)=>(
+                        <ProductCard1 
+                        nombre={p.nombre} 
+                        imagen={p.imagen} 
+                        precio={p.precio}
+                        rating={p.rating}
+                        ratingCount={p.ratingCount}
+                        refLink={p.refLink}
+                        tienda={p.tienda}
+                        />
+                    ))
+                }
+            </StyleGridContainer1>
+        </section>
+        <section>
+            <h3>¿Cuál es el funko pop kuromi precio y dónde buscar?</h3>
+            <p>El <strong>funko pop kuromi precio</strong> puede variar considerablemente dependiendo de la rareza del modelo, la tienda y si se trata de una edición limitada. Es recomendable comparar precios en diferentes plataformas y tiendas especializadas en coleccionables para conseguir las mejores ofertas. No te olvides de revisar también las ediciones de <strong>funko pop sanrio kuromi</strong> que a menudo vienen en sets especiales.</p>
+            
+        </section>
 </Layout>
 
 <style>
     h1, h2, section p{
         color:var(--secondary-color);
-        padding: 20px;
     }
 </style>

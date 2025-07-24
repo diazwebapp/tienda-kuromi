@@ -158,13 +158,16 @@ export const peluches:Peluche[]=[
 type Funko={
         nombre:string
         precio:number
-       imagen:string
+        imagen:string
         rating:number
         color:string
         edicion:number
         ratingCount:number
         tienda: "Amazon" | "Ebay"
         refLink: string
+        caracteristicas?:{
+            ocasion?:"Celebraciones" | "Clasica" | "Especial",
+        }
     }
 
     export const funkos:Funko[]=[
@@ -177,10 +180,13 @@ type Funko={
             edicion:90,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/4kAshcP"
         },
         {
-            nombre:"Funko Pop melody 91",
+            nombre:"Funko Pop my melody 91",
             precio:16.00,
            imagen:"https://m.media-amazon.com/images/I/611ndYUan7L._AC_SX679_.jpg",
             rating:4.3,
@@ -188,6 +194,9 @@ type Funko={
             edicion:91,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/3TCJzei"
         },
         {
@@ -199,6 +208,9 @@ type Funko={
             edicion:92,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/4lOsgCY"
         },
         {
@@ -221,6 +233,9 @@ type Funko={
             edicion:108,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/3GHklZj"
         },
         {
@@ -232,10 +247,13 @@ type Funko={
             edicion:105,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/44pvuqR"
         },
         {
-            nombre:"Funko Pop Kuromi premium",
+            nombre:"Funko Pop Kuromi especial",
             precio:23.00,
            imagen:"https://m.media-amazon.com/images/I/71QhdKRvvJL._AC_SX679_.jpg",
             rating:5,
@@ -243,6 +261,9 @@ type Funko={
             edicion:0,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Especial"
+            },
             refLink:"https://amzn.to/4kIY4sg"
         },
         {
@@ -254,40 +275,51 @@ type Funko={
             edicion:0,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Especial"
+            },
             refLink:"https://amzn.to/4lS69f9"
         },
         {
-            nombre:"Funko Pop melody 103",
-            precio:185.00,
+            nombre:"Funko popo My Melody Ice Cream 103",
+            precio:18.50,
            imagen:"https://m.media-amazon.com/images/I/61WBhCiCnrL._AC_SX679_.jpg",
             rating:5,
             ratingCount:52,
             edicion:103,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/3GKlNKm"
         },
         {
-            nombre:"Funko Pop Cinnamoroll 100",
-            precio:185.00,
-           imagen:"https://m.media-amazon.com/images/I/61xZclTXN7L._AC_SX679_.jpg",
-            rating:5,
-            ratingCount:83,
-            edicion:100,
-            color:"multicolor",
-            tienda:"Amazon",
-            refLink:"https://amzn.to/4eT65JO"
-        },
-        {
             nombre:"Funko Pop! 62: Hello Kitty - Fiesta del Unicornio ",
-            precio:185.00,
+            precio:18.50,
            imagen:"https://m.media-amazon.com/images/I/71zCDHKt7eL._AC_SY879_.jpg",
             rating:5,
             ratingCount:1027,
             edicion:62,
             color:"multicolor",
             tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Celebraciones"
+            },
             refLink:"https://amzn.to/40NR85N"
+        },
+        {
+            nombre:"Funko devil kuromi - 64",
+            precio:37.40,
+           imagen:"https://m.media-amazon.com/images/I/71ukuxAnesL._AC_SX679_.jpg",
+            rating:5,
+            ratingCount:627,
+            edicion:64,
+            color:"multicolor",
+            tienda:"Amazon",
+            caracteristicas:{
+                ocasion:"Especial"
+            },
+            refLink:"https://www.ebay.es/itm/156330135039?_skw=funko+kuromi+64"
         }
-        
     ]
