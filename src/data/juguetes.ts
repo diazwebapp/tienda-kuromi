@@ -172,6 +172,20 @@ type Funko={
 
     export const funkos:Funko[]=[
         {
+            nombre:"Funko Pop Kuromi 71",
+            precio:21.00,
+           imagen:"https://i.ebayimg.com/images/g/rDoAAOSwCbFmGiah/s-l1600.webp",
+            rating:4.8,
+            ratingCount:2914,
+            edicion:71,
+            color:"multicolor",
+            tienda:"Ebay",
+            caracteristicas:{
+                ocasion:"Especial"
+            },
+            refLink:"https://ebay.us/NyWLwd"
+        },
+        {
             nombre:"Funko Pop Kuromi 90",
             precio:16.00,
            imagen:"https://m.media-amazon.com/images/I/61z4sIi+S6L._AC_SX679_.jpg",
@@ -316,10 +330,10 @@ type Funko={
             ratingCount:627,
             edicion:64,
             color:"multicolor",
-            tienda:"Amazon",
+            tienda:"Ebay",
             caracteristicas:{
                 ocasion:"Especial"
             },
-            refLink:"https://www.ebay.es/itm/156330135039?_skw=funko+kuromi+64"
+            refLink:"https://ebay.us/7GfBKk"
         }
     ]
