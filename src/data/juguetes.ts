@@ -39,7 +39,7 @@ export const peluches:Peluche[]=[
                 "rating": 4,
                 "ratingCount": 53,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/296126930888?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/296126930888?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 4,
@@ -53,7 +53,7 @@ export const peluches:Peluche[]=[
                 "rating": 4,
                 "ratingCount": 53,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/296126930888?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/296126930888?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 5,
@@ -67,7 +67,7 @@ export const peluches:Peluche[]=[
                 "rating": 4,
                 "ratingCount": 53,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/296126926403?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/296126926403?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 6,
@@ -81,7 +81,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount": 53,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/295950909925?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/295950909925?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 7,
@@ -95,7 +95,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount": 53,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/295950909925?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/295950909925?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 8,
@@ -109,7 +109,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount":1,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/405994920681?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/405994920681?_skw=peluche+kuromi+50cm&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 9,
@@ -123,7 +123,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount":1,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche%20kuromi%2050cm&amdata=enc%3AAQAKAAAAoFkggFvd1GGDu0w3yXCmi1e9xAlJIiCQBFbCd4yemSPXKD%2FAvqoj5TdGELiTRo726rpbQ82yS%2FAYz8lb%2FNJvdvoNtOoHz6H1K5HfgoM0ncSEAIta3AjiD1%2F9B6OQ5FmHw2%2F%2BHWotniaAijVRW%2BosfSIPPzaPOfermufkAvK4fxsZ%2Fh%2BAvH%2FJ9fhRasv8RgT%2BPNb%2FQuEssI11MJulqC1%2FCyE%3D&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 10,
@@ -137,7 +137,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount":1,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche%20kuromi%2050cm&amdata=enc%3AAQAKAAAAoFkggFvd1GGDu0w3yXCmi1e9xAlJIiCQBFbCd4yemSPXKD%2FAvqoj5TdGELiTRo726lE%2FaE3LFu%2FYj84kqEQDye9SGPXe8NPfIcuQPKkQ4cf9wanz6R2ROZhjD8C7IqZVrgk66QKngsBEalMAPi4d8qcJnVS0stEMQp5XWD70bmy1dGDbGtOun7KHwha881vII51eLDv3wuusXjKoEhWCHeg%3D&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             },
             {
                 "id": 11,
@@ -151,7 +151,7 @@ export const peluches:Peluche[]=[
                 "rating": 5,
                 "ratingCount":1,
                 "tienda": "Ebay",
-                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche+kuromi+50cm"
+                "refLink":"https://www.ebay.es/itm/226281831247?_skw=peluche%20kuromi%2050cm&amdata=enc%3AAQAKAAAAoFkggFvd1GGDu0w3yXCmi1e9xAlJIiCQBFbCd4yemSPXKD%2FAvqoj5TdGELiTRo726lE%2FaE3LFu%2FYj84kqEQDye9SGPXe8NPfIcuQPKkQ4cf9wanz6R2ROZhjD8C7IqZVrgk66QKngsBEalMAPi4d8qcJnVS0stEMQp5XWD70bmy1dGDbGtOun7KHwha881vII51eLDv3wuusXjKoEhWCHeg%3D&mkcid=1&mkrid=1185-53479-19255-0&siteid=186&campid=5339117358&customid=&toolid=10001&mkevt=1"
             }
         ]
 
