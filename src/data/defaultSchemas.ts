@@ -7,6 +7,6 @@ export const schemaOrganization:OrganizationSchema={
     "@id":createFullUrlWithSlug("/"),
     name:"Kuromiland",
     url:createFullUrlWithSlug("/"),
-    logo:"https://dekuromy.store/kuromi-cabeza.png",
+    logo:"https://dekuromy.store/favicon.png",
     email:"diazwebapp@gmail.com"
 }
