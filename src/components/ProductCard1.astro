@@ -26,7 +26,7 @@ function generateStars(rating: number) {
 
 <article class="product-card">
   <header class="product-image">
-    <Image width={320} height={180} src={imagen} alt=`imagen de ${nombre}` loading="lazy" />
+    <Image width={300} height={300} src={imagen} alt=`imagen de ${nombre}` loading="lazy" />
     <div class="product-overlay">
       <div class="store-badge">
         {tienda === "Amazon" ? "📦" : "🛒"} {tienda}
@@ -54,7 +54,7 @@ function generateStars(rating: number) {
         </span>
       )) : null}
     </div>
-    
+    </div>
     <footer class="product-footer">
         <div class="price">
           <span class="currency">€</span>
@@ -72,16 +72,15 @@ function generateStars(rating: number) {
 <style>
   .product-card {
     background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
+    border-radius:20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 182, 193, 0.3);
-    height: 100%;
     display: flex;
     flex-direction: column;
     animation: fade 0.5s ease-in both;
     animation-delay: .3s;
     transition: transform 0.3s ease;
+    padding: 0;
   }
 @keyframes fade{
   from{
@@ -99,15 +98,14 @@ function generateStars(rating: number) {
 
   .product-image {
     position: relative;
-    height: 180px;
     overflow: hidden;
   }
 
   .product-image img {
     width: 100%;
-    height: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: contain;
     transition: transform 0.3s ease;
   }
   .product-overlay {
@@ -116,16 +114,29 @@ function generateStars(rating: number) {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 20, 147, 0.8) 0%, rgba(139, 0, 139, 0.8) 100%);
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
     padding: 16px;
-    opacity: 0;
     transition: opacity 0.3s ease;
+    opacity: 0;
   }
-
-  .product-card:hover .product-overlay {
+  .product-overlay::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(
+    135deg,
+    var(--decorative-color) 0%, /* 70% de opacidad para el primer color */
+    var(--decorative-color-2) 100% /* 30% de opacidad para el segundo color */
+  );
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .product-card:hover .product-overlay{
     opacity: 1;
   }
 
@@ -137,8 +148,12 @@ function generateStars(rating: number) {
     font-size: 14px;
     font-weight: 600;
     backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
   }
-
+  .product-info {
+      padding: 10px;
+    }
   .product-name {
     color: #2C2C2C;
     margin-bottom:8px;
@@ -170,10 +185,11 @@ function generateStars(rating: number) {
 
   .product-footer {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 16px;
-    margin-top: auto;
+    align-items: center;
+    padding: 10px;
+      flex-direction: row;
+      gap: 4px;
   }
 
   .price {
@@ -195,15 +211,4 @@ function generateStars(rating: number) {
   }
 
 
-  @media (max-width: 768px) {
-    .product-info {
-      padding: 10px;
-    }
-    .product-footer {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 4px;
-    }
-
-  }
 </style>

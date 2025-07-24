@@ -196,6 +196,7 @@ const schemas = [
     .gridFilter{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap:20px;
     }
     .toolbar{
         background-color: var(--secondary-color);
@@ -289,24 +290,16 @@ const schemas = [
     if(tamanos.length > 0){
         for(let t of tamanos){
             t.addEventListener('change',()=>{
-                const product = buscarProductos(t.value)
-                const exists = products.some(p=>p.textContent === product?.textContent)
-                if(!exists){
-                    products.push(product)
-                    filterUI()
-                }
+                buscarProductos(t.value)
+                filterUI()
             })
         }
     }
     if(colores.length > 0){
         for(let c of colores){
             c.addEventListener('change',()=>{
-                const product = buscarProductos(null,c.value)
-                const exists = products.some(p=>p.textContent === product?.textContent)
-                if(!exists){
-                    products.push(product)
-                    filterUI()
-                }
+                buscarProductos(c.value)
+                filterUI()
             })
         }
     }
@@ -316,23 +309,19 @@ const schemas = [
         })
     }
     
-    function buscarProductos(dimenciones?:string | null,colores?:string){
+    function buscarProductos(dimenciones:string){
+        resetearFiltros()
         for(let article of articles){
-            const altura = article.querySelector("small.dimenciones")
-            const color = article.querySelector("small.colores")
-            if(altura || color){
+            const altura = article.querySelector(".product-features")
+            if(altura){
                 const a = altura?.textContent
-                const c = color?.textContent
                 if(a && dimenciones){
                     if(a.includes(dimenciones)){
                         const clone = article.cloneNode(true)
-                        return clone
-                    }
-                }
-                if(c && colores){
-                    if(c.includes(colores)){
-                        const clone = article.cloneNode(true)
-                        return clone
+                        const exists = products.some(p=>p.textContent === clone?.textContent)
+                        if(!exists){
+                            products.push(clone)
+                        }
                     }
                 }
             }
