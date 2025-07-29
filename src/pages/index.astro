@@ -9,6 +9,7 @@ const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 const mocSlug = createFullUrlWithSlug("mochilas-bolsos-de-kuromi")
 const pelSlug = createFullUrlWithSlug("peluches-de-kuromi")
 const fkSlug = createFullUrlWithSlug("funko-de-kuromi")
+const cmSlug = createFullUrlWithSlug("camisetas-de-kuromi")
 const canonical = createFullUrlWithSlug("/")
 
 
@@ -46,7 +47,7 @@ const schemas=[schemaOrganization]
         <div class="hero">
             <h1>¡Cosas de Kuromi!</h1>
             <p>
-                Descubre la colección más tierna de cosas de Kuromi. Ropa, Peluches, mochilas, audífonos, accesorios y más articulos al estilo kawai.
+                Descubre la colección más tierna de cosas de Kuromi. Ropa, Peluches, mochilas, audífonos, accesorios y más articulos al estilo kawaii.
             </p>
             <a class="cta" href="#productos" >ver productos</a>
         </div>
@@ -67,10 +68,11 @@ const schemas=[schemaOrganization]
     <section id="productos" >
         <h2>Las cosas más destacadas de kuromi</h2>
         <div class="products-grid">
-            <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug={audSlug} />
+            <ArticleCard1 shortText="¡Desata tu lado rebelde con nuestra colección de camisas y blusas de Kuromi!" title="Playeras de kuromi" imageUri="https://m.media-amazon.com/images/I/613+VTPuleL._AC_SX569_.jpg" anchorText="Camisas de kuromi" slug={cmSlug} />
             <ArticleCard1 shortText="Mochilas y bolsos de kuromi" title="Mochilas de kuromi" imageUri="https://m.media-amazon.com/images/I/71uQgEcjj9L._AC_SX679_.jpg" anchorText="Mochilas de kuromi" slug={mocSlug} />
             <ArticleCard1 shortText="Peluches bonitos" title="Peluches de kuromi" imageUri="https://images-eu.ssl-images-amazon.com/images/I/51jNWILEKyL._AC_UL495_SR435,495_.jpg" anchorText="Peluches de kuromi" slug={pelSlug} />
 			<ArticleCard1 shortText="funko pops bonitos" title="funko pops de kuromi" imageUri="https://m.media-amazon.com/images/I/71ZpkzK4syL.jpg" anchorText="funko pops de kuromi" slug={fkSlug} />
+			<ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug={audSlug} />
         </div>
     </section>
 	<section>

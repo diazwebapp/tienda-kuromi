@@ -1,0 +1,334 @@
+---
+import { camisetas } from "../data/camisetas";
+import Layout from "../layouts/Layout.astro";
+import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas";
+import { createFullUrlWithSlug } from "../utils/slugCreator";
+import ProductCard2 from "../components/ProductCard2.astro";
+import StyleGridContainer1 from "../components/StyleGridContainer1.astro";
+import WithSidebar from "../layouts/WithSidebar.astro";
+
+const title = "Camisetas de Kuromi";
+const description = "Variedad de tallas, modelo y colores en camisetas y blusas de kuromi para todas las edades";
+const canonical = createFullUrlWithSlug("camisetas-de-kuromi");
+
+let tallas:any = camisetas.map(p=>p.caracteristicas?.talla)
+tallas = [...new Set(tallas.flat())] 
+
+let colores:any = camisetas.map(p=>p.caracteristicas?.color)
+colores = [...new Set(colores.flat())] 
+
+const productsCollection = camisetas.map((m) => {
+    let product:ProductInCollection = {
+        "@type": "Product",
+        name:m.nombre,
+        image:m.imagen,
+        url:m.refLink,
+        offers:{
+            "@type":"Offer",
+            priceCurrency:"EUR",
+            price:m.precio.toString(),
+            availability:"https://schema.org/InStock"
+        },
+        brand:{
+            "@type":"Brand",
+            name:"Kuromi"
+        },
+        aggregateRating:{
+            "@type":"AggregateRating",
+            ratingValue:m.rating.toString(),
+            reviewCount:m.ratingCount.toString() 
+        } 
+    }
+    return product;
+})
+
+
+const schemaColection:ProductCollectionSchema={
+    "@context":"https://schema.org",
+    "@type":"ProductCollection",
+    name:title,
+    description:description,
+    url:canonical,
+    includesObject:productsCollection
+}
+
+const schemas = [
+    schemaColection
+]
+---
+
+<Layout title={title} description={description} canonical={canonical} schemas={schemas} filtro >
+    <WithSidebar>
+        <aside>
+            <form class="filtro" id="filter-box" >
+                <fieldset>
+                    <legend>Tamaños</legend>
+                    {
+                        tallas.map((t:any)=><label><input type="radio" name="altura" value={t} /> {t} </label>)
+                    }
+                </fieldset>
+                <fieldset>
+                    <legend>Colores</legend>
+                    {
+                        colores.map((c:any)=><label><input type="radio" name="color" value={c} /> {c} </label>)
+                    }
+                </fieldset>
+            </form>
+        </aside>
+        <section>
+            <h1>¡camisetas de Kuromi! Elige la perfecta para ti</h1>
+            <p>Adquiere tu camiseta Kuromi ideal. Ya sean franelas de Kuromi para el día a día, playeras Kuromi para un look casual o camisas de Kuromi para destacar, tenemos la información que buscas. ¡Prepárate para llevar tu amor por Kuromi a otro nivel con estilo y comodidad!</p>
+            
+            <div class="rsfilter">
+                <div class="toolbar">
+                    <b>Resultado:</b>
+                    <button class="cta" id="btnReset" >
+                        Quitar filtros
+                    </button>
+                </div>
+                <div class="gridFilter"></div>
+            </div>
+            <br>
+            <StyleGridContainer1  >
+                {
+                    camisetas.map(m=>(
+                        <ProductCard2 
+                            nombre={m.nombre}
+                            imagen={m.imagen}
+                            precio={m.precio}
+                            caracteristicas={m.caracteristicas}
+                            rating={m.rating}
+                            ratingCount={m.ratingCount}
+                            refLink={m.refLink}
+                            tienda={m.tienda} />
+                    ))
+                }
+            </StyleGridContainer1>
+        </section>
+        
+        <section>
+            <h2>Tipos de playeras Kuromi que marcan tendencia</h2>
+            <p>El universo de Kuromi es vasto, y con él, la variedad de prendas. Aquí te presentamos los estilos más populares para tus <strong>playeras Kuromi</strong>:</p>
+            <ul>
+                <li><strong>Camisetas Gráficas de Kuromi:</strong> Con estampados grandes y llamativos de Kuromi en diferentes poses y expresiones. Perfectas para un look audaz.</li>
+                <li><strong>Franelas de Kuromi Minimalistas:</strong> Diseños más sutiles con pequeños logos o siluetas de Kuromi, ideales para quienes prefieren la discreción sin renunciar al estilo.</li>
+                <li><strong>Blusas de Kuromi Oversize:</strong> Para un estilo relajado y moderno, estas <strong>blusas de Kuromi</strong> ofrecen comodidad y un toque urbano.</li>
+                <li><strong>Camisetas de Kuromi con Mensajes:</strong> A menudo incluyen frases célebres de Kuromi o mensajes que reflejan su personalidad rebelde y adorable.</li>
+                <li><strong>Franelas de Kuromi de Colaboraciones Especiales:</strong> Algunas ediciones limitadas ofrecen diseños únicos que combinan a Kuromi con otras marcas o artistas.</li>
+            </ul>
+            <h3>¿Cómo Elegir la Franela de Kuromi Ideal Según la Ocasión?</h3>
+            <p>La versatilidad de las <strong>franelas de Kuromi</strong> te permite adaptarlas a diversas situaciones:</p>
+            <ul>
+                <li>Para un concierto o evento temático, una camiseta gráfica será tu mejor aliada.</li>
+                <li>En un día casual con amigos, una playera oversize de Kuromi te brindará estilo y confort.</li>
+                <li>Si buscas un toque divertido para tu atuendo diario, una blusa de Kuromi con un diseño sutil es perfecta.</li>
+            </ul>
+        </section>
+        
+        <section>
+            <h2>Guía de Compra: Encuentra tu Camiseta de Kuromi Perfecta</h2>
+            <p>Al buscar tu próxima <strong>camiseta de Kuromi</strong>, considera los siguientes aspectos clave para asegurar una compra exitosa:</p>
+            <ul>
+                <li><strong>Material:</strong> Opta por algodón para mayor comodidad y transpirabilidad. Las mezclas de algodón y poliéster ofrecen durabilidad y resistencia al encogimiento.</li>
+                <li><strong>Talla y Ajuste:</strong> Revisa la tabla de tallas del fabricante. Decide si prefieres un ajuste ceñido, regular u oversize para tus <strong>camisas de Kuromi</strong>.</li>
+                <li><strong>Diseño y Estampado:</strong> Asegúrate de que el diseño sea de alta calidad, con colores vibrantes y que no se desvanezcan fácilmente con los lavados.</li>
+        </section>
+    </WithSidebar>
+    
+    <script is:inline type="application/ld+json">
+    {
+      "@context": "[https://schema.org](https://schema.org)",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cuáles son los materiales más comunes para las camisetas de Kuromi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Las camisetas de Kuromi suelen estar hechas de algodón 100% para mayor comodidad y transpirabilidad, o de mezclas de algodón y poliéster, que ofrecen durabilidad y resistencia al encogimiento."
+        }
+      },{
+        "@type": "Question",
+        "name": "¿Cómo puedo asegurarme de que mi camiseta de Kuromi es auténtica?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para garantizar la autenticidad de tu camiseta de Kuromi, se recomienda comprarla en tiendas oficiales de Sanrio o a través de distribuidores autorizados y reconocidos."
+        }
+      }]
+    }
+    </script>
+</Layout>
+<style>
+    /**Estilos para gridFilter */
+    .gridFilter{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap:20px;
+    }
+    .toolbar{
+        background-color: var(--secondary-color);
+        justify-content: space-between;
+        padding:10px 5px;
+        align-items: center;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        display:flex;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        &&button{
+            border: none;
+            display: inline;
+            margin: unset;
+            cursor: pointer;
+        }
+       
+    }
+    ul{
+        color: var(--secondary-color);
+        padding-left: 20px;
+        margin: 20px auto;
+    }
+    /** estilos del filtro */
+    .filtro{
+        padding: 8px 0;
+        position: fixed;
+        left: -90%;
+        top:0;
+        height: calc(100% - 63px);
+        overflow: auto;
+        background-color: rgba(0,0,0,.5);
+        backdrop-filter: blur(5px);
+        transition: left .5s ease-out;
+        z-index:3;
+        min-width:280px;
+        padding:10px;
+    }
+    .filtro fieldset, .filtro fieldset legend{
+            background-color: var(--secondary-color);
+        }
+    .filtro fieldset legend{
+        padding: 3px 10px;
+        border-radius: 7px 7px 0 0;
+    }
+    .filtro fieldset{
+        border-radius: 7px;
+        margin-bottom: 10px;
+        padding: 10px;
+        border:none;
+    }
+    .filtro fieldset label{
+        display: block;
+        border-bottom: 1px solid var(--shadow-color);
+        padding: 10px 0;
+        cursor: pointer;
+    }
+    .open-filter {
+        left: 0;
+    }
+    @media (min-width: 916px) {
+        
+        .filtro{
+            position: inherit;
+            left: unset;
+            width: 100%;
+            min-width: unset;
+            max-height: unset;
+            background-color: transparent;
+            padding: 0;
+        }
+        aside{
+            grid-row-start: 1;
+            grid-row-end: 8; 
+        }
+        section{
+            grid-column-start: 2;
+            grid-column-end: 3;
+        }
+    }
+</style>
+
+<script>
+    const products:any[] = []
+    const resetFilters = document.querySelector<HTMLButtonElement>('#resetFilters')
+    const tamanos = document.querySelectorAll<HTMLInputElement>('input[name="altura"]')
+    const colores = document.querySelectorAll<HTMLInputElement>('input[name="color"]')
+    const articles = document.querySelectorAll<HTMLElement>('article.product-card')
+    const containerFliler = document.querySelector<HTMLElement>('.gridFilter')
+    const toolbar = document.querySelector<HTMLElement>('.toolbar')
+    const btnReset = document.querySelector<HTMLButtonElement>('#btnReset')
+
+
+
+    if(tamanos.length > 0){
+        for(let t of tamanos){
+            t.addEventListener('change',()=>{
+                buscarProductos(t.value)
+                filterUI()
+            })
+        }
+    }
+    if(colores.length > 0){
+        for(let c of colores){
+            c.addEventListener('change',()=>{
+                buscarProductos(c.value)
+                filterUI()
+            })
+        }
+    }
+    if(resetFilters){
+        resetFilters.addEventListener('click',()=>{
+            resetearFiltros()
+        })
+    }
+    
+    function buscarProductos(dimenciones:string){
+        resetearFiltros()
+        for(let article of articles){
+            const altura = article.querySelector(".product-features")
+            if(altura){
+            console.log("estoy por aquí")
+                const a = altura?.textContent
+                if(a && dimenciones){
+                    if(a.includes(dimenciones)){
+                        const clone = article.cloneNode(true)
+                        const exists = products.some(p=>p.textContent === clone?.textContent)
+                        if(!exists){
+                            products.push(clone)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    function resetearFiltros(){
+        products.length = 0
+    }
+
+    function filterUI(reset:boolean = false){
+        if(reset){
+            products.length = 0
+            if (containerFliler && toolbar){
+                containerFliler.innerHTML = ''
+                toolbar.style.opacity="0"
+            }
+            return
+        }
+       
+        if (containerFliler){
+            containerFliler.innerHTML = ''
+            products.forEach(p=>{
+                containerFliler.appendChild(p)
+            })
+        }
+        if (toolbar && btnReset){
+            btnReset.addEventListener('click',()=>{
+                resetearFiltros()
+                filterUI(true)
+            })
+            toolbar.style.opacity="1"
+        } 
+
+    }
+
+        
+</script>

@@ -1,0 +1,215 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  nombre: string;
+  precio: number;
+  imagen: string;
+  rating: number;
+  ratingCount: number;
+  tienda?: "Ebay" | "Amazon"
+  refLink?: string;
+  caracteristicas?: any;
+  hiddeBtn?:boolean
+}
+
+const { nombre, precio, imagen, rating, ratingCount, tienda, refLink, caracteristicas, hiddeBtn=false } = Astro.props as Props;
+const {talla,color} = caracteristicas
+
+function generateStars(rating: number) {
+  const fullStars = Math.floor(rating);
+  const hasHalfStar = rating % 1 !== 0;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+  
+  return `<span style="color: #FFD700;" >★</span>`.repeat(fullStars) + (hasHalfStar ? `<span style="color: #FFD700;" >★</span>` : '') + `<span>★</span>`.repeat(emptyStars);
+}
+---
+
+<article class="product-card">
+  <header class="product-image">
+    <Image width={300} height={300} src={imagen} alt=`imagen de ${nombre}` loading="lazy" />
+    <div class="product-overlay">
+      <div class="store-badge">
+        {tienda === "Amazon" ? "📦" : "🛒"} {tienda}
+      </div>
+    </div>
+  </header>
+  
+  <div class="product-info">
+    <p class="product-name">{nombre}</p>
+    
+    <div>
+      <span set:html={generateStars(rating)} ></span>
+      <small class="rating-text">({ratingCount} reseñas)</small>
+    </div>
+    
+    <div class="product-features">
+        <span class="feature">
+            {talla?.map((t:string)=>(
+                <small>{t} </small>
+            ))}
+        </span>
+        <span class="feature">
+            {color?.map((c:string)=>(
+                <small>{c} </small>
+            ))}
+        </span>
+    </div>
+    </div>
+    <footer class="product-footer">
+        <div class="price">
+          <span class="currency">€</span>
+          <span class="amount">{precio.toFixed(2)}</span>
+        </div>
+            {
+              !hiddeBtn ? (<a href={refLink} target="_blank" rel="noopener noreferrer nofollow" class="cta cta-small">
+                Ver detalles
+              </a>) : ''
+            }
+        </div>
+    </footer>
+</article>
+
+<style>
+  .product-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius:20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    animation: fade 0.5s ease-in both;
+    animation-delay: .3s;
+    transition: transform 0.3s ease;
+    padding: 0;
+  }
+@keyframes fade{
+  from{
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+  .product-card:hover {
+    transform: translateY(-10px);
+  }
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  .product-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 16px;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  .product-overlay::after {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: "";
+    position: absolute;
+    background: linear-gradient(
+    135deg,
+    var(--decorative-color) 0%, /* 70% de opacidad para el primer color */
+    var(--decorative-color-2) 100% /* 30% de opacidad para el segundo color */
+  );
+    opacity: 0.5;
+    z-index: 1;
+  }
+  .product-card:hover .product-overlay{
+    opacity: 1;
+  }
+
+  .store-badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2C2C2C;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+  }
+  .product-info {
+      padding: 10px;
+    }
+  .product-name {
+    color: #2C2C2C;
+    margin-bottom:8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 14px;
+    padding-top: 10px;
+    font-weight: 500;
+  }
+
+  
+
+  .rating-text {
+    color: #666;
+  }
+
+  .product-features {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  .feature {
+    color: var(--decorative-color-2);
+  }
+
+  .product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+      flex-direction: row;
+      gap: 4px;
+  }
+
+  .price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .currency {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--decorative-color-2);
+  }
+
+  .amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--decorative-color-2);
+  }
+
+
+</style>

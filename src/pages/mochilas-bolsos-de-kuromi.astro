@@ -6,9 +6,13 @@ import StyleGridContainer1 from "../components/StyleGridContainer1.astro";
 import WithSidebar from "../layouts/WithSidebar.astro";
 import { createFullUrlWithSlug } from "../utils/slugCreator";
 import type { ProductCollectionSchema, ProductInCollection } from "../utils/schemas";
+import ArticleCard1 from "../components/ArticleCard1.astro";
 const title = "mochilas de kuromi";
 const description = "Adquiere mochilas de kuromi con la mejor calidad del mundo";
 const canonical = createFullUrlWithSlug("mochilas-bolsos-de-kuromi");
+
+const cmSlug = createFullUrlWithSlug("camisetas-de-kuromi")
+const audSlug = createFullUrlWithSlug("audifonos-de-kuromi")
 
 //Extraer colores para hacer un filtro
 const todosColores = mochilas.map((m) => m.caracteristicas.color);
@@ -94,6 +98,12 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
                     }
                 </fieldset>
             </form>
+            <fieldset style="background-color: var(--secondary-color);border-radius: 7px;padding:7px ; border:none;" >
+                <legend style="background-color: var(--secondary-color);border-radius: 7px;padding:7px ;">Otros productos</legend>
+                <ArticleCard1 shortText="¡Desata tu lado rebelde con nuestra colección de camisas y blusas de Kuromi!" title="Playeras de kuromi" imageUri="https://m.media-amazon.com/images/I/613+VTPuleL._AC_SX569_.jpg" anchorText="Camisas de kuromi" slug={cmSlug} />
+			    <ArticleCard1 shortText="Audífonos con la mejor calidad de sonido " title="Audifonos de kuromi" imageUri="https://m.media-amazon.com/images/I/71Z4uIvrt4L.jpg" anchorText="Audifonos kuromi" slug={audSlug} />
+
+            </fieldset>
         </aside>
         <section>
             <h1>Mochilas de Kuromi: ¡Encuentra tú estilo ideal!</h1>
@@ -199,7 +209,11 @@ const varias = mochilas.filter((m) => !m.caracteristicas.escolar);
         grid-column-end: 3;
         gap:10px;
     }
-    
+    ul{
+        color: var(--secondary-color);
+        padding-left: 20px;
+        margin: 20px auto;
+    }
     .filtro {
         background-color: var(--secondary-color);
         padding: 10px;
